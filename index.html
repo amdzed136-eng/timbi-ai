@@ -1,157 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMBI AI | AI Websites & Automation</title>
+    <meta name="description" content="TIMBI AI builds premium AI-powered websites, branding systems and automation workflows for modern businesses.">
+    <meta name="keywords" content="TIMBI AI, AI websites, web design, automation, branding, Istanbul, Turkey">
+    <meta name="author" content="TIMBI AI">
+    <meta property="og:title" content="TIMBI AI | Premium AI Websites & Automation">
+    <meta property="og:description" content="Premium websites, branding and AI automation systems built for ambitious businesses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://timbiai.com">
+    <meta name="theme-color" content="#d4af37">
+    <title>TIMBI AI | Premium AI Websites & Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="site-bg" aria-hidden="true">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="grid-overlay"></div>
+    </div>
 
-    <nav class="navbar">
-        <a href="#home" class="logo">TIMBI AI</a>
+    <header class="navbar" id="navbar">
+        <a href="#home" class="logo">
+            <span class="logo-mark">T</span>
+            <span>TIMBI AI</span>
+        </a>
 
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
 
-        <div class="nav-links" id="navLinks">
+        <nav class="nav-links" id="navLinks">
             <a href="#home">Home</a>
             <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <a href="#pricing">Offers</a>
             <a href="#process">Process</a>
             <a href="#about">About</a>
+            <a href="#contact" class="nav-cta">Start a Project</a>
+        </nav>
+    </header>
 
-            <div class="dropdown">
-                <button class="dropdown-btn" onclick="toggleContact(event)">
-                    Contact
-                </button>
+    <main>
+        <section class="hero section" id="home">
+            <div class="hero-content reveal">
+                <p class="eyebrow">AI WEBSITES • BRANDING • AUTOMATION</p>
+                <h1>We build AI-powered brands that look expensive.</h1>
+                <p class="hero-text">
+                    TIMBI AI creates premium websites, sharp brand identities and intelligent automation systems for businesses ready to look professional, save time and grow faster.
+                </p>
 
-                <div class="dropdown-content" id="contactMenu">
-                    <a href="mailto:contact@timbiai.com">Email</a>
-                    <a href="https://www.instagram.com/timbi.ai?igsh=dnh5dGw5a2l6ajYy&utm_source=qr" target="_blank">
-                        Instagram
-                    </a>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" target="_blank" class="btn btn-primary">Start on WhatsApp</a>
+                    <a href="#work" class="btn btn-secondary">View Work</a>
+                </div>
+
+                <div class="trust-row">
+                    <div><strong>48h</strong><span>Fast concept preview</span></div>
+                    <div><strong>100%</strong><span>Responsive design</span></div>
+                    <div><strong>AI</strong><span>Automation-ready</span></div>
                 </div>
             </div>
-        </div>
-    </nav>
 
-    <section class="hero" id="home">
-        <span class="badge">TIMBI AI • DIGITAL EXPERIENCES</span>
+            <div class="hero-panel reveal">
+                <div class="panel-top">
+                    <span></span><span></span><span></span>
+                    <p>timbiai.com/system</p>
+                </div>
 
-        <h1>AI Websites for Modern Businesses</h1>
+                <div class="panel-card main-card">
+                    <small>Premium Digital System</small>
+                    <h3>Website + Brand + AI Workflow</h3>
+                    <div class="progress-line"><span></span></div>
+                </div>
 
-        <p>
-            We create premium websites, branding systems and AI automations
-            for businesses that want to look professional and grow faster.
-        </p>
+                <div class="mini-grid">
+                    <div class="panel-card"><b>Brand</b><span>Luxury positioning</span></div>
+                    <div class="panel-card"><b>Web</b><span>Fast landing pages</span></div>
+                    <div class="panel-card"><b>AI</b><span>Smart workflows</span></div>
+                    <div class="panel-card"><b>Growth</b><span>Better conversion</span></div>
+                </div>
+            </div>
+        </section>
 
-        <div class="hero-buttons">
-            <a href="mailto:contact@timbiai.com" class="primary-btn">Start a Project</a>
-            <a href="#services" class="secondary-btn">View Services</a>
-        </div>
-    </section>
+        <section class="logos reveal">
+            <span>Medical clinics</span>
+            <span>Restaurants</span>
+            <span>Real estate</span>
+            <span>Beauty brands</span>
+            <span>Local services</span>
+        </section>
 
-    <section class="services" id="services">
-        <div class="section-title">
-            <span>What we build</span>
-            <h2>Premium digital systems</h2>
-        </div>
-
-        <div class="cards">
-            <div class="card">
-                <h3>Web Design</h3>
-                <p>Modern, fast and futuristic websites designed to impress your customers.</p>
+        <section class="services section" id="services">
+            <div class="section-title reveal">
+                <p class="eyebrow">What we build</p>
+                <h2>Premium digital systems made to convert.</h2>
+                <p>Not just a pretty website. A complete online presence designed to make your business look serious and trustworthy.</p>
             </div>
 
-            <div class="card">
-                <h3>AI Automation</h3>
-                <p>Automate repetitive business tasks using AI-powered workflows.</p>
+            <div class="cards">
+                <article class="card reveal">
+                    <div class="icon">✦</div>
+                    <h3>Premium Web Design</h3>
+                    <p>High-end landing pages and business websites with clean layouts, strong copy and smooth mobile experience.</p>
+                </article>
+
+                <article class="card reveal">
+                    <div class="icon">⚡</div>
+                    <h3>AI Automation</h3>
+                    <p>Automated client replies, lead capture, follow-ups and workflows that save time and reduce manual work.</p>
+                </article>
+
+                <article class="card reveal">
+                    <div class="icon">◆</div>
+                    <h3>Brand Identity</h3>
+                    <p>Colors, typography, positioning and visual direction that make your company feel premium from day one.</p>
+                </article>
+
+                <article class="card reveal">
+                    <div class="icon">↗</div>
+                    <h3>Digital Growth</h3>
+                    <p>Conversion-focused structure, calls-to-action, SEO foundations and social-ready sections for better visibility.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="work section" id="work">
+            <div class="section-title reveal">
+                <p class="eyebrow">Portfolio concepts</p>
+                <h2>Designed for businesses that want to stand out.</h2>
+                <p>Example directions TIMBI AI can build and adapt for real brands.</p>
             </div>
 
-            <div class="card">
-                <h3>Branding</h3>
-                <p>Create a premium identity with strong visuals, colors and positioning.</p>
+            <div class="portfolio-grid">
+                <article class="project-card large reveal">
+                    <div class="project-tag">Luxury Service</div>
+                    <h3>Premium Barber Website</h3>
+                    <p>Booking-focused homepage with strong visuals, prices, reviews and WhatsApp lead capture.</p>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-tag">Healthcare</div>
+                    <h3>Medical Clinic</h3>
+                    <p>Professional clinic site with service pages, trust sections and appointment CTA.</p>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-tag">Restaurant</div>
+                    <h3>Modern Restaurant</h3>
+                    <p>Menu showcase, location, social proof and mobile-first reservation flow.</p>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-tag">AI System</div>
+                    <h3>Automation Dashboard</h3>
+                    <p>Lead management, smart responses and workflow overview for small teams.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="pricing section" id="pricing">
+            <div class="section-title reveal">
+                <p class="eyebrow">Offers</p>
+                <h2>Simple packages for serious businesses.</h2>
+                <p>Clear starting points. Each project can be customized depending on the business goal.</p>
             </div>
 
-            <div class="card">
-                <h3>Digital Growth</h3>
-                <p>Build a stronger online presence and attract better business opportunities.</p>
+            <div class="pricing-grid">
+                <article class="price-card reveal">
+                    <h3>Starter</h3>
+                    <p class="price">Landing Page</p>
+                    <ul>
+                        <li>1 premium page</li>
+                        <li>Responsive design</li>
+                        <li>Basic SEO setup</li>
+                        <li>WhatsApp CTA</li>
+                    </ul>
+                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20am%20interested%20in%20the%20Starter%20package" target="_blank" class="btn btn-secondary">Ask for Starter</a>
+                </article>
+
+                <article class="price-card featured reveal">
+                    <div class="popular">Most requested</div>
+                    <h3>Premium</h3>
+                    <p class="price">Website + Brand</p>
+                    <ul>
+                        <li>Multi-section website</li>
+                        <li>Premium visual identity</li>
+                        <li>Conversion copywriting</li>
+                        <li>Contact & social setup</li>
+                    </ul>
+                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20am%20interested%20in%20the%20Premium%20package" target="_blank" class="btn btn-primary">Ask for Premium</a>
+                </article>
+
+                <article class="price-card reveal">
+                    <h3>Elite AI</h3>
+                    <p class="price">Full System</p>
+                    <ul>
+                        <li>Website + brand system</li>
+                        <li>AI automation workflow</li>
+                        <li>Lead capture strategy</li>
+                        <li>Growth-ready structure</li>
+                    </ul>
+                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20am%20interested%20in%20the%20Elite%20AI%20package" target="_blank" class="btn btn-secondary">Ask for Elite</a>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="process" id="process">
-        <div class="section-title">
-            <span>How it works</span>
-            <h2>From idea to launch</h2>
-        </div>
-
-        <div class="steps">
-            <div class="step">
-                <span>01</span>
-                <h3>Strategy</h3>
-                <p>We understand your business, your audience and your goals.</p>
+        <section class="process section" id="process">
+            <div class="section-title reveal">
+                <p class="eyebrow">Process</p>
+                <h2>From idea to launch without confusion.</h2>
             </div>
 
-            <div class="step">
-                <span>02</span>
-                <h3>Design</h3>
-                <p>We create a premium visual direction adapted to your brand.</p>
+            <div class="steps">
+                <article class="step reveal"><span>01</span><h3>Strategy</h3><p>We define your offer, audience, brand direction and conversion goal.</p></article>
+                <article class="step reveal"><span>02</span><h3>Design</h3><p>We create the premium look: layout, visuals, copy and user flow.</p></article>
+                <article class="step reveal"><span>03</span><h3>Build</h3><p>We develop a fast, responsive and polished website experience.</p></article>
+                <article class="step reveal"><span>04</span><h3>Launch</h3><p>We prepare your site for real clients, traffic and future growth.</p></article>
             </div>
+        </section>
 
-            <div class="step">
-                <span>03</span>
-                <h3>Build</h3>
-                <p>We develop a clean, responsive and modern web experience.</p>
+        <section class="about section" id="about">
+            <div class="about-box reveal">
+                <p class="eyebrow">About TIMBI AI</p>
+                <h2>Built from vision, designed for the future.</h2>
+                <p>
+                    TIMBI AI is a digital brand based in Istanbul, focused on building intelligent web experiences for modern businesses. The mission is simple: make brands look premium, operate smarter and convert more visitors into clients.
+                </p>
             </div>
+        </section>
 
-            <div class="step">
-                <span>04</span>
-                <h3>Launch</h3>
-                <p>We prepare your site for real users, clients and growth.</p>
+        <section class="contact-section section" id="contact">
+            <div class="contact-card reveal">
+                <p class="eyebrow">Ready to upgrade?</p>
+                <h2>Let’s build a premium digital presence for your brand.</h2>
+                <p>Send a message now and tell us what business you want to build or improve.</p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" target="_blank" class="btn btn-primary">Message on WhatsApp</a>
+                    <a href="mailto:contact@timbiai.com" class="btn btn-secondary">Email TIMBI AI</a>
+                    <a href="https://www.instagram.com/timbi.ai?igsh=dnh5dGw5a2l6ajYy&utm_source=qr" target="_blank" class="btn btn-secondary">Instagram</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section class="about" id="about">
-        <div class="about-box">
-            <span>About TIMBI AI</span>
+    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" class="whatsapp-float" target="_blank">
+        <span>WhatsApp</span>
+        <b>✆</b>
+    </a>
 
-            <h2>Built from vision, designed for the future.</h2>
-
-            <p>
-                TIMBI AI is a digital brand focused on building intelligent web experiences.
-                From premium websites to automation systems, the mission is simple:
-                help modern businesses look more professional, save time and grow faster.
-            </p>
-        </div>
-    </section>
-
-    <section class="contact-section">
-        <h2>Ready to build your digital presence?</h2>
-
-        <p>Let’s create something premium for your brand.</p>
-
-        <div class="contact-buttons">
-            <a href="mailto:contact@timbiai.com" class="primary-btn">Email TIMBI AI</a>
-
-            <a href="https://www.instagram.com/timbi.ai?igsh=dnh5dGw5a2l6ajYy&utm_source=qr"
-                target="_blank"
-                class="secondary-btn">
-                Instagram
-            </a>
-        </div>
-    </section>
-
-    <footer>
+    <footer class="footer">
         <h3>TIMBI AI</h3>
         <p>AI Websites • Branding • Automation</p>
         <p>Istanbul, Türkiye</p>
+        <small>© <span id="year"></span> TIMBI AI. All rights reserved.</small>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>
