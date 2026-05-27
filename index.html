@@ -1,31 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMBI AI | Premium AI Websites & Automation</title>
     <meta name="description" content="TIMBI AI builds premium AI-powered websites, branding systems and automation workflows for modern businesses.">
     <meta name="keywords" content="TIMBI AI, AI websites, web design, automation, branding, Istanbul, Turkey">
     <meta name="author" content="TIMBI AI">
+    <meta name="robots" content="index, follow">
     <meta property="og:title" content="TIMBI AI | Premium AI Websites & Automation">
     <meta property="og:description" content="Premium websites, branding and AI automation systems built for ambitious businesses.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://timbiai.com">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#d4af37">
-    <title>TIMBI AI | Premium AI Websites & Automation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://timbiai.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="site-bg" aria-hidden="true">
-        <div class="orb orb-one"></div>
-        <div class="orb orb-two"></div>
-        <div class="grid-overlay"></div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-mark">T</div>
+            <div class="loader-ring"></div>
+        </div>
+        <p class="loader-label">TIMBI AI</p>
+        <p class="loader-sub">Premium AI Agency</p>
     </div>
 
+    <!-- Background -->
+    <div class="site-bg">
+        <div class="orb orb-one" id="orbOne"></div>
+        <div class="orb orb-two" id="orbTwo"></div>
+        <div class="orb orb-three"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Navbar -->
     <header class="navbar" id="navbar">
         <a href="#home" class="logo">
             <span class="logo-mark">T</span>
-            <span>TIMBI AI</span>
+            <span class="logo-text">TIMBI AI</span>
         </a>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
@@ -33,34 +55,69 @@
         </button>
 
         <nav class="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#work">Work</a>
-            <a href="#pricing">Offers</a>
-            <a href="#process">Process</a>
-            <a href="#about">About</a>
-            <a href="#contact" class="nav-cta">Start a Project</a>
+            <a href="#home"     data-i18n="nav_home">Accueil</a>
+            <a href="#why"      data-i18n="nav_why">Pourquoi nous</a>
+            <a href="#services" data-i18n="nav_services">Services</a>
+            <a href="#work"     data-i18n="nav_work">Portfolio</a>
+            <a href="#pricing"  data-i18n="nav_pricing">Offres</a>
+            <a href="#process"  data-i18n="nav_process">Processus</a>
+            <a href="#contact" class="nav-cta" data-i18n="nav_cta">Démarrer un projet</a>
         </nav>
+
+        <!-- Language Switcher -->
+        <div class="lang-switch" id="langSwitch">
+            <button class="lang-current" id="langToggle" aria-label="Changer la langue" aria-expanded="false">
+                <span class="lang-flag" id="currentFlag">🇫🇷</span>
+                <span class="lang-code" id="currentCode">FR</span>
+                <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <div class="lang-dropdown" id="langDropdown" role="listbox">
+                <button class="lang-option" data-lang="fr" role="option">
+                    <span class="lang-opt-flag">🇫🇷</span>
+                    <span>Français</span>
+                </button>
+                <button class="lang-option" data-lang="en" role="option">
+                    <span class="lang-opt-flag">🇬🇧</span>
+                    <span>English</span>
+                </button>
+                <button class="lang-option" data-lang="tr" role="option">
+                    <span class="lang-opt-flag">🇹🇷</span>
+                    <span>Türkçe</span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <main id="mainContent">
+
+        <!-- ══ HERO ══ -->
         <section class="hero section" id="home">
             <div class="hero-content reveal">
-                <p class="eyebrow">AI WEBSITES • BRANDING • AUTOMATION</p>
-                <h1>We build AI-powered brands that look expensive.</h1>
-                <p class="hero-text">
-                    TIMBI AI creates premium websites, sharp brand identities and intelligent automation systems for businesses ready to look professional, save time and grow faster.
-                </p>
-
+                <p class="eyebrow" data-i18n="hero_eyebrow">SITES WEB IA · BRANDING · AUTOMATISATION</p>
+                <h1>
+                    <span data-i18n="hero_h1_main">Nous créons des marques IA qui</span>
+                    <span class="shimmer-text" data-i18n="hero_h1_accent"> ont l'air premium.</span>
+                </h1>
+                <p class="hero-text" data-i18n="hero_text">TIMBI AI conçoit des sites web haut de gamme, des identités de marque percutantes et des systèmes d'automatisation intelligents pour les entreprises prêtes à paraître professionnelles, gagner du temps et croître plus vite.</p>
                 <div class="hero-buttons">
-                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" target="_blank" class="btn btn-primary">Start on WhatsApp</a>
-                    <a href="#work" class="btn btn-secondary">View Work</a>
+                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="hero_btn_primary">Démarrer un projet</a>
+                    <a href="#work"    class="btn btn-secondary"        data-i18n="hero_btn_secondary">Voir le portfolio</a>
                 </div>
-
                 <div class="trust-row">
-                    <div><strong>48h</strong><span>Fast concept preview</span></div>
-                    <div><strong>100%</strong><span>Responsive design</span></div>
-                    <div><strong>AI</strong><span>Automation-ready</span></div>
+                    <div>
+                        <strong>48h</strong>
+                        <span data-i18n="trust_1_label">Aperçu concept</span>
+                    </div>
+                    <div>
+                        <strong>100%</strong>
+                        <span data-i18n="trust_2_label">Design responsive</span>
+                    </div>
+                    <div>
+                        <strong data-i18n="trust_3_val">IA</strong>
+                        <span   data-i18n="trust_3_label">Automation-ready</span>
+                    </div>
                 </div>
             </div>
 
@@ -69,13 +126,11 @@
                     <span></span><span></span><span></span>
                     <p>timbiai.com/system</p>
                 </div>
-
                 <div class="panel-card main-card">
                     <small>Premium Digital System</small>
                     <h3>Website + Brand + AI Workflow</h3>
                     <div class="progress-line"><span></span></div>
                 </div>
-
                 <div class="mini-grid">
                     <div class="panel-card"><b>Brand</b><span>Luxury positioning</span></div>
                     <div class="panel-card"><b>Web</b><span>Fast landing pages</span></div>
@@ -85,179 +140,439 @@
             </div>
         </section>
 
-        <section class="logos reveal">
-            <span>Medical clinics</span>
-            <span>Restaurants</span>
-            <span>Real estate</span>
-            <span>Beauty brands</span>
-            <span>Local services</span>
-        </section>
+        <!-- ══ LOGOS ══ -->
+        <div class="logos-wrapper">
+            <section class="logos reveal">
+                <span data-i18n="logos_1">Cliniques médicales</span>
+                <span class="sep">·</span>
+                <span data-i18n="logos_2">Restaurants</span>
+                <span class="sep">·</span>
+                <span data-i18n="logos_3">Immobilier</span>
+                <span class="sep">·</span>
+                <span data-i18n="logos_4">Marques beauté</span>
+                <span class="sep">·</span>
+                <span data-i18n="logos_5">Services locaux</span>
+                <span class="sep">·</span>
+                <span data-i18n="logos_6">E-commerce</span>
+            </section>
+        </div>
 
-        <section class="services section" id="services">
+        <!-- ══ WHY TIMBI AI ══ -->
+        <section class="why section" id="why">
             <div class="section-title reveal">
-                <p class="eyebrow">What we build</p>
-                <h2>Premium digital systems made to convert.</h2>
-                <p>Not just a pretty website. A complete online presence designed to make your business look serious and trustworthy.</p>
+                <p class="eyebrow" data-i18n="why_eyebrow">La différence TIMBI</p>
+                <h2>
+                    <span data-i18n="why_h1">Pourquoi les marques choisissent</span><br>
+                    <span class="gold-text" data-i18n="why_h1_accent">TIMBI AI.</span>
+                </h2>
+                <p data-i18n="why_text">Nous combinons une esthétique premium avec des systèmes intelligents pour créer des expériences digitales qui font vraiment croître votre entreprise.</p>
             </div>
 
+            <div class="why-stats reveal">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="48" data-suffix="h">0h</div>
+                    <div class="stat-label" data-i18n="stat_1_label">Aperçu Concept</div>
+                    <div class="stat-desc"  data-i18n="stat_1_desc">Du brief au premier design</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+                    <div class="stat-label" data-i18n="stat_2_label">Mobile-First</div>
+                    <div class="stat-desc"  data-i18n="stat_2_desc">Chaque pixel, chaque écran</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3" data-suffix="×">0×</div>
+                    <div class="stat-label" data-i18n="stat_3_label">Lift Conversion Moy.</div>
+                    <div class="stat-desc"  data-i18n="stat_3_desc">vs sites DIY génériques</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+                    <div class="stat-label" data-i18n="stat_4_label">Types de Métiers</div>
+                    <div class="stat-desc"  data-i18n="stat_4_desc">Des cliniques aux restaurants</div>
+                </div>
+            </div>
+
+            <div class="why-cards">
+                <article class="why-card reveal">
+                    <div class="why-card-glow"></div>
+                    <div class="why-card-icon">◆</div>
+                    <h3 data-i18n="card_1_h3">Conçu pour les résultats, pas seulement l'esthétique</h3>
+                    <p   data-i18n="card_1_p">Chaque mise en page, titre et appel à l'action est conçu pour convertir les visiteurs en clients payants. Le design est le medium — la croissance est l'objectif.</p>
+                    <div class="why-card-line"></div>
+                </article>
+                <article class="why-card reveal">
+                    <div class="why-card-glow"></div>
+                    <div class="why-card-icon">⚡</div>
+                    <h3 data-i18n="card_2_h3">Natif IA dès le premier jour</h3>
+                    <p   data-i18n="card_2_p">L'automatisation, la capture de leads et les workflows intelligents sont intégrés dès le départ. Votre système digital fonctionne 24h/24 pour que vous n'ayez pas à le faire.</p>
+                    <div class="why-card-line"></div>
+                </article>
+                <article class="why-card reveal">
+                    <div class="why-card-glow"></div>
+                    <div class="why-card-icon">✦</div>
+                    <h3 data-i18n="card_3_h3">Premium, rapide et personnel</h3>
+                    <p   data-i18n="card_3_p">Pas d'agence lente, pas de file d'attente. Accès direct via WhatsApp, livraison rapide et une expérience sur-mesure qui reflète la qualité de votre marque.</p>
+                    <div class="why-card-line"></div>
+                </article>
+            </div>
+
+            <div class="why-badges reveal">
+                <span class="badge" data-i18n="badge_1">⚡ Concept en 48h</span>
+                <span class="badge" data-i18n="badge_2">🤖 Systèmes IA</span>
+                <span class="badge" data-i18n="badge_3">📱 Mobile-First</span>
+                <span class="badge" data-i18n="badge_4">💬 Accès WhatsApp Direct</span>
+                <span class="badge" data-i18n="badge_5">✦ Qualité Premium</span>
+                <span class="badge" data-i18n="badge_6">🌍 Standards Mondiaux</span>
+                <span class="badge" data-i18n="badge_7">🔒 Propriété Complète Livrée</span>
+                <span class="badge" data-i18n="badge_8">🚀 Code Prêt au Lancement</span>
+            </div>
+        </section>
+
+        <!-- ══ SERVICES ══ -->
+        <section class="services section" id="services">
+            <div class="section-title reveal">
+                <p class="eyebrow" data-i18n="svc_eyebrow">Ce que nous construisons</p>
+                <h2 data-i18n="svc_h2">Systèmes digitaux premium conçus pour convertir.</h2>
+                <p  data-i18n="svc_p">Pas juste un beau site. Une présence en ligne complète conçue pour donner à votre entreprise une image sérieuse et digne de confiance.</p>
+            </div>
             <div class="cards">
                 <article class="card reveal">
                     <div class="icon">✦</div>
-                    <h3>Premium Web Design</h3>
-                    <p>High-end landing pages and business websites with clean layouts, strong copy and smooth mobile experience.</p>
+                    <h3 data-i18n="svc_1_h3">Design Web Premium</h3>
+                    <p   data-i18n="svc_1_p">Pages d'atterrissage et sites d'entreprise haut de gamme avec des mises en page épurées, des textes forts et une expérience mobile fluide.</p>
                 </article>
-
                 <article class="card reveal">
                     <div class="icon">⚡</div>
-                    <h3>AI Automation</h3>
-                    <p>Automated client replies, lead capture, follow-ups and workflows that save time and reduce manual work.</p>
+                    <h3 data-i18n="svc_2_h3">Automatisation IA</h3>
+                    <p   data-i18n="svc_2_p">Réponses clients automatisées, capture de leads, suivi et workflows qui économisent du temps et réduisent le travail manuel.</p>
                 </article>
-
                 <article class="card reveal">
                     <div class="icon">◆</div>
-                    <h3>Brand Identity</h3>
-                    <p>Colors, typography, positioning and visual direction that make your company feel premium from day one.</p>
+                    <h3 data-i18n="svc_3_h3">Identité de Marque</h3>
+                    <p   data-i18n="svc_3_p">Couleurs, typographie, positionnement et direction visuelle qui font paraître votre entreprise premium dès le premier jour.</p>
                 </article>
-
                 <article class="card reveal">
                     <div class="icon">↗</div>
-                    <h3>Digital Growth</h3>
-                    <p>Conversion-focused structure, calls-to-action, SEO foundations and social-ready sections for better visibility.</p>
+                    <h3 data-i18n="svc_4_h3">Croissance Digitale</h3>
+                    <p   data-i18n="svc_4_p">Structure axée sur la conversion, appels à l'action, bases SEO et sections prêtes pour les réseaux sociaux pour une meilleure visibilité.</p>
                 </article>
             </div>
         </section>
 
+        <!-- ══ PORTFOLIO ══ -->
         <section class="work section" id="work">
             <div class="section-title reveal">
-                <p class="eyebrow">Portfolio concepts</p>
-                <h2>Designed for businesses that want to stand out.</h2>
-                <p>Example directions TIMBI AI can build and adapt for real brands.</p>
+                <p class="eyebrow" data-i18n="work_eyebrow">Concepts portfolio</p>
+                <h2 data-i18n="work_h2">Conçu pour les entreprises qui veulent se démarquer.</h2>
+                <p  data-i18n="work_p">Exemples de directions que TIMBI AI peut construire et adapter pour de vraies marques.</p>
             </div>
-
             <div class="portfolio-grid">
+
                 <article class="project-card large reveal">
-                    <div class="project-tag">Luxury Service</div>
-                    <h3>Premium Barber Website</h3>
-                    <p>Booking-focused homepage with strong visuals, prices, reviews and WhatsApp lead capture.</p>
+                    <div class="project-preview preview-barber">
+                        <div class="pv-bar"><span></span><span></span><span></span></div>
+                        <div class="pv-barber-nav">
+                            <div class="pv-logo"></div>
+                            <div class="pv-nav-links"><span></span><span></span><span></span></div>
+                            <div class="pv-nav-btn"></div>
+                        </div>
+                        <div class="pv-barber-hero">
+                            <div class="pv-barber-eyebrow"></div>
+                            <div class="pv-barber-h1 w80"></div>
+                            <div class="pv-barber-h1 w60"></div>
+                            <div class="pv-barber-sub"></div>
+                            <div class="pv-barber-sub" style="width:80%"></div>
+                            <div class="pv-barber-cta"><div class="btn-g"></div><div class="btn-o"></div></div>
+                        </div>
+                        <div class="pv-reviews">
+                            <div class="pv-stars">
+                                <div class="pv-star"></div><div class="pv-star"></div><div class="pv-star"></div><div class="pv-star"></div><div class="pv-star"></div>
+                            </div>
+                            <div class="pv-review-text"></div>
+                        </div>
+                        <div class="pv-barber-services">
+                            <div class="pv-service"><div class="pv-service-icon"></div><div class="pv-service-title"></div><div class="pv-service-price"></div></div>
+                            <div class="pv-service"><div class="pv-service-icon"></div><div class="pv-service-title"></div><div class="pv-service-price"></div></div>
+                            <div class="pv-service"><div class="pv-service-icon"></div><div class="pv-service-title"></div><div class="pv-service-price"></div></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag" data-i18n="proj_1_tag">Service Luxe</div>
+                        <h3 data-i18n="proj_1_h3">Site Web Barbershop Premium</h3>
+                        <p  data-i18n="proj_1_p">Page d'accueil axée réservation avec visuels forts, tarifs, avis et capture de leads WhatsApp.</p>
+                    </div>
                 </article>
 
                 <article class="project-card reveal">
-                    <div class="project-tag">Healthcare</div>
-                    <h3>Medical Clinic</h3>
-                    <p>Professional clinic site with service pages, trust sections and appointment CTA.</p>
+                    <div class="project-preview preview-clinic">
+                        <div class="pv-bar"><span></span><span></span><span></span></div>
+                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
+                        <div class="pv-clinic-hero">
+                            <div class="pv-clinic-text">
+                                <div class="pv-clinic-badge"></div>
+                                <div class="pv-clinic-h1"></div><div class="pv-clinic-h2"></div>
+                                <div class="pv-clinic-sub"></div><div class="pv-clinic-sub w75"></div>
+                                <div class="pv-clinic-cta"></div>
+                            </div>
+                            <div class="pv-clinic-card">
+                                <div class="pv-clinic-cross"></div>
+                                <div class="pv-clinic-slot full"></div><div class="pv-clinic-slot half"></div>
+                                <div class="pv-clinic-slot full"></div><div class="pv-clinic-slot half"></div>
+                            </div>
+                        </div>
+                        <div class="pv-clinic-trust"><div class="pv-trust-item"></div><div class="pv-trust-item"></div><div class="pv-trust-item"></div></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag" data-i18n="proj_2_tag">Santé</div>
+                        <h3 data-i18n="proj_2_h3">Page Clinique Médicale</h3>
+                        <p  data-i18n="proj_2_p">Design axé confiance avec services, avis et CTA de rendez-vous.</p>
+                    </div>
                 </article>
 
                 <article class="project-card reveal">
-                    <div class="project-tag">Restaurant</div>
-                    <h3>Modern Restaurant</h3>
-                    <p>Menu showcase, location, social proof and mobile-first reservation flow.</p>
+                    <div class="project-preview preview-restaurant">
+                        <div class="pv-bar"><span></span><span></span><span></span></div>
+                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
+                        <div class="pv-resto-hero">
+                            <div class="pv-resto-label"></div>
+                            <div class="pv-resto-h1 w75"></div><div class="pv-resto-h1" style="width:55%"></div>
+                            <div class="pv-resto-cta"><div class="pv-resto-btn fill"></div><div class="pv-resto-btn out"></div></div>
+                        </div>
+                        <div class="pv-menu">
+                            <div class="pv-menu-title"></div>
+                            <div class="pv-menu-item"><div class="pv-menu-left"><div class="pv-mi-name"></div><div class="pv-mi-desc"></div></div><div class="pv-mi-price"></div></div>
+                            <div class="pv-menu-item"><div class="pv-menu-left"><div class="pv-mi-name" style="width:60px"></div><div class="pv-mi-desc"></div></div><div class="pv-mi-price"></div></div>
+                            <div class="pv-menu-item"><div class="pv-menu-left"><div class="pv-mi-name" style="width:55px"></div><div class="pv-mi-desc"></div></div><div class="pv-mi-price"></div></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag" data-i18n="proj_3_tag">Restauration</div>
+                        <h3 data-i18n="proj_3_h3">Système de Marque Restaurant</h3>
+                        <p  data-i18n="proj_3_p">Identité visuelle, page menu, contenus réseaux sociaux et intégration livraison.</p>
+                    </div>
                 </article>
 
                 <article class="project-card reveal">
-                    <div class="project-tag">AI System</div>
-                    <h3>Automation Dashboard</h3>
-                    <p>Lead management, smart responses and workflow overview for small teams.</p>
+                    <div class="project-preview preview-realestate">
+                        <div class="pv-bar"><span></span><span></span><span></span></div>
+                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
+                        <div class="pv-realty-search"><div class="pv-search-bar"><div class="pv-search-icon"></div><div class="pv-search-text"></div><div class="pv-search-go"></div></div></div>
+                        <div class="pv-realty-listings">
+                            <div class="pv-listing"><div class="pv-listing-img"></div><div class="pv-listing-info"><div class="pv-listing-name"></div><div class="pv-listing-loc"></div><div class="pv-listing-price"></div></div></div>
+                            <div class="pv-listing"><div class="pv-listing-img" style="background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(99,102,241,.08))"></div><div class="pv-listing-info"><div class="pv-listing-name" style="width:60%"></div><div class="pv-listing-loc"></div><div class="pv-listing-price"></div></div></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag" data-i18n="proj_4_tag">Immobilier</div>
+                        <h3 data-i18n="proj_4_h3">Site Agence Immobilière</h3>
+                        <p  data-i18n="proj_4_p">Pages de listings épurées, formulaires de contact et positionnement de marque premium.</p>
+                    </div>
                 </article>
+
+                <article class="project-card reveal">
+                    <div class="project-preview preview-dashboard">
+                        <div class="pv-bar"><span></span><span></span><span></span></div>
+                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
+                        <div class="pv-metrics">
+                            <div class="pv-metric"><div class="pv-metric-val g"></div><div class="pv-metric-lbl"></div></div>
+                            <div class="pv-metric"><div class="pv-metric-val b"></div><div class="pv-metric-lbl"></div></div>
+                            <div class="pv-metric"><div class="pv-metric-val p"></div><div class="pv-metric-lbl"></div></div>
+                        </div>
+                        <div class="pv-chart">
+                            <div class="pv-chart-bars">
+                                <div class="pv-cb"></div><div class="pv-cb"></div><div class="pv-cb"></div><div class="pv-cb"></div>
+                                <div class="pv-cb"></div><div class="pv-cb"></div><div class="pv-cb"></div>
+                            </div>
+                            <div class="pv-chart-axis"></div>
+                        </div>
+                        <div class="pv-dash-table">
+                            <div class="pv-table-row"><div class="pv-row-dot g"></div><div class="pv-row-name"></div><div class="pv-row-val"></div></div>
+                            <div class="pv-table-row"><div class="pv-row-dot y"></div><div class="pv-row-name" style="width:65%"></div><div class="pv-row-val" style="background:rgba(212,175,55,.35)"></div></div>
+                            <div class="pv-table-row"><div class="pv-row-dot p"></div><div class="pv-row-name" style="width:80%"></div><div class="pv-row-val" style="background:rgba(139,92,246,.35)"></div></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tag" data-i18n="proj_5_tag">Système IA</div>
+                        <h3 data-i18n="proj_5_h3">Tableau de Bord Automatisation</h3>
+                        <p  data-i18n="proj_5_p">Gestion des leads, réponses intelligentes et vue d'ensemble des workflows pour petites équipes.</p>
+                    </div>
+                </article>
+
             </div>
         </section>
 
+        <!-- ══ PRICING ══ -->
         <section class="pricing section" id="pricing">
             <div class="section-title reveal">
-                <p class="eyebrow">Offers</p>
-                <h2>Simple packages for serious businesses.</h2>
-                <p>Clear starting points. Each project can be customized depending on the business goal.</p>
+                <p class="eyebrow" data-i18n="price_eyebrow">Offres</p>
+                <h2 data-i18n="price_h2">Des forfaits simples pour des entreprises sérieuses.</h2>
+                <p  data-i18n="price_p">Points de départ clairs. Chaque projet peut être personnalisé selon l'objectif métier.</p>
             </div>
-
             <div class="pricing-grid">
                 <article class="price-card reveal">
-                    <h3>Starter</h3>
-                    <p class="price">Landing Page</p>
+                    <h3 data-i18n="plan_1_h3">Starter</h3>
+                    <p class="price" data-i18n="plan_1_price">Page d'Atterrissage</p>
                     <ul>
-                        <li>1 premium page</li>
-                        <li>Responsive design</li>
-                        <li>Basic SEO setup</li>
-                        <li>WhatsApp CTA</li>
+                        <li data-i18n="plan_1_1">1 page premium</li>
+                        <li data-i18n="plan_1_2">Design responsive</li>
+                        <li data-i18n="plan_1_3">Configuration SEO de base</li>
+                        <li data-i18n="plan_1_4">CTA WhatsApp</li>
                     </ul>
-                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20am%20interested%20in%20the%20Starter%20package" target="_blank" class="btn btn-secondary">Ask for Starter</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="plan_1_btn">Demander Starter</a>
                 </article>
-
                 <article class="price-card featured reveal">
-                    <div class="popular">Most requested</div>
-                    <h3>Premium</h3>
-                    <p class="price">Website + Brand</p>
+                    <div class="popular" data-i18n="plan_2_popular">Le plus demandé</div>
+                    <h3 data-i18n="plan_2_h3">Premium</h3>
+                    <p class="price" data-i18n="plan_2_price">Site Web + Marque</p>
                     <ul>
-                        <li>Multi-section website</li>
-                        <li>Premium visual identity</li>
-                        <li>Conversion copywriting</li>
-                        <li>Contact & social setup</li>
+                        <li data-i18n="plan_2_1">Site multi-sections</li>
+                        <li data-i18n="plan_2_2">Identité visuelle premium</li>
+                        <li data-i18n="plan_2_3">Copywriting conversion</li>
+                        <li data-i18n="plan_2_4">Configuration contact &amp; réseaux</li>
                     </ul>
-                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20am%20interested%20in%20the%20Premium%20package" target="_blank" class="btn btn-primary">Ask for Premium</a>
+                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="plan_2_btn">Demander Premium</a>
                 </article>
-
                 <article class="price-card reveal">
-                    <h3>Elite AI</h3>
-                    <p class="price">Full System</p>
+                    <h3 data-i18n="plan_3_h3">Elite IA</h3>
+                    <p class="price" data-i18n="plan_3_price">Système Complet</p>
                     <ul>
-                        <li>Website + brand system</li>
-                        <li>AI automation workflow</li>
-                        <li>Lead capture strategy</li>
-                        <li>Growth-ready structure</li>
+                        <li data-i18n="plan_3_1">Site web + système de marque</li>
+                        <li data-i18n="plan_3_2">Workflow d'automatisation IA</li>
+                        <li data-i18n="plan_3_3">Stratégie de capture de leads</li>
+                        <li data-i18n="plan_3_4">Structure prête à la croissance</li>
                     </ul>
-                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20am%20interested%20in%20the%20Elite%20AI%20package" target="_blank" class="btn btn-secondary">Ask for Elite</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="plan_3_btn">Demander Elite</a>
                 </article>
             </div>
         </section>
 
+        <!-- ══ PROCESS ══ -->
         <section class="process section" id="process">
             <div class="section-title reveal">
-                <p class="eyebrow">Process</p>
-                <h2>From idea to launch without confusion.</h2>
+                <p class="eyebrow" data-i18n="proc_eyebrow">Processus</p>
+                <h2 data-i18n="proc_h2">De l'idée au lancement sans confusion.</h2>
             </div>
-
             <div class="steps">
-                <article class="step reveal"><span>01</span><h3>Strategy</h3><p>We define your offer, audience, brand direction and conversion goal.</p></article>
-                <article class="step reveal"><span>02</span><h3>Design</h3><p>We create the premium look: layout, visuals, copy and user flow.</p></article>
-                <article class="step reveal"><span>03</span><h3>Build</h3><p>We develop a fast, responsive and polished website experience.</p></article>
-                <article class="step reveal"><span>04</span><h3>Launch</h3><p>We prepare your site for real clients, traffic and future growth.</p></article>
+                <article class="step reveal"><span>01</span><h3 data-i18n="proc_1_h3">Stratégie</h3><p data-i18n="proc_1_p">On définit votre offre, audience, direction de marque et objectif de conversion.</p></article>
+                <article class="step reveal"><span>02</span><h3 data-i18n="proc_2_h3">Design</h3><p data-i18n="proc_2_p">On crée le look premium : mise en page, visuels, textes et parcours utilisateur.</p></article>
+                <article class="step reveal"><span>03</span><h3 data-i18n="proc_3_h3">Développement</h3><p data-i18n="proc_3_p">On développe une expérience web rapide, responsive et soignée.</p></article>
+                <article class="step reveal"><span>04</span><h3 data-i18n="proc_4_h3">Lancement</h3><p data-i18n="proc_4_p">On prépare votre site pour de vrais clients, du trafic et une croissance future.</p></article>
             </div>
         </section>
 
+        <!-- ══ ABOUT ══ -->
         <section class="about section" id="about">
             <div class="about-box reveal">
-                <p class="eyebrow">About TIMBI AI</p>
-                <h2>Built from vision, designed for the future.</h2>
-                <p>
-                    TIMBI AI is a digital brand based in Istanbul, focused on building intelligent web experiences for modern businesses. The mission is simple: make brands look premium, operate smarter and convert more visitors into clients.
-                </p>
+                <p class="eyebrow" data-i18n="about_eyebrow">À propos de TIMBI AI</p>
+                <h2 data-i18n="about_h2">Né d'une vision, conçu pour le futur.</h2>
+                <p  data-i18n="about_p">TIMBI AI est une marque digitale basée à Istanbul, spécialisée dans la création d'expériences web intelligentes pour les entreprises modernes. La mission est simple : faire paraître les marques premium, fonctionner plus intelligemment et convertir plus de visiteurs en clients.</p>
             </div>
         </section>
 
-        <section class="contact-section section" id="contact">
-            <div class="contact-card reveal">
-                <p class="eyebrow">Ready to upgrade?</p>
-                <h2>Let’s build a premium digital presence for your brand.</h2>
-                <p>Send a message now and tell us what business you want to build or improve.</p>
-                <div class="contact-buttons">
-                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" target="_blank" class="btn btn-primary">Message on WhatsApp</a>
-                    <a href="mailto:contact@timbiai.com" class="btn btn-secondary">Email TIMBI AI</a>
-                    <a href="https://www.instagram.com/timbi.ai?igsh=dnh5dGw5a2l6ajYy&utm_source=qr" target="_blank" class="btn btn-secondary">Instagram</a>
+        <!-- ══ CTA BANNER ══ -->
+        <section class="cta-banner">
+            <div class="cta-banner-glow"></div>
+            <div class="cta-banner-content reveal">
+                <p class="eyebrow" data-i18n="cta_eyebrow">Prêt à élever votre marque ?</p>
+                <h2>
+                    <span data-i18n="cta_h2_main">Votre système digital premium</span><br>
+                    <span class="gold-text" data-i18n="cta_h2_accent">commence ici.</span>
+                </h2>
+                <p data-i18n="cta_p">Rejoignez les entreprises qui ont choisi de paraître professionnelles, d'automatiser plus intelligemment et de croître plus vite avec TIMBI AI.</p>
+                <div class="cta-banner-actions">
+                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="cta_btn_primary">Démarrer un projet</a>
+                    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;flex-shrink:0" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        <span data-i18n="cta_btn_wa">Discuter sur WhatsApp</span>
+                    </a>
                 </div>
             </div>
         </section>
+
+        <!-- ══ CONTACT ══ -->
+        <section class="contact-section section" id="contact">
+            <div class="contact-grid">
+                <div class="contact-copy reveal">
+                    <p class="eyebrow" data-i18n="contact_eyebrow">Démarrez votre projet</p>
+                    <h2 data-i18n="contact_h2">Dites-nous ce dont vous avez besoin. On préparera la direction premium.</h2>
+                    <p  data-i18n="contact_p">Remplissez ce formulaire de projet et WhatsApp s'ouvrira avec un message professionnel propre déjà préparé.</p>
+                    <div class="contact-highlights">
+                        <div><strong>01</strong><span data-i18n="contact_hl_1">Décrivez votre entreprise</span></div>
+                        <div><strong>02</strong><span data-i18n="contact_hl_2">Choisissez votre service</span></div>
+                        <div><strong>03</strong><span data-i18n="contact_hl_3">Envoyez directement sur WhatsApp</span></div>
+                    </div>
+                </div>
+
+                <form class="project-form reveal" id="projectForm">
+                    <div class="form-row">
+                        <label for="name" data-i18n="form_name_label">Votre nom</label>
+                        <input type="text" id="name" data-i18n-ph="form_name_ph" placeholder="Exemple : Amadou" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="business" data-i18n="form_biz_label">Type d'entreprise</label>
+                        <input type="text" id="business" data-i18n-ph="form_biz_ph" placeholder="Restaurant, clinique, barbershop..." required>
+                    </div>
+                    <div class="form-row">
+                        <label for="service" data-i18n="form_svc_label">Service souhaité</label>
+                        <select id="service" data-i18n-opt="form_svc" required>
+                            <option value="" data-i18n="form_svc_ph">Choisissez un service</option>
+                            <option value="Premium Website"    data-i18n="form_svc_1">Site Web Premium</option>
+                            <option value="Brand Identity"     data-i18n="form_svc_2">Identité de Marque</option>
+                            <option value="AI Automation"      data-i18n="form_svc_3">Automatisation IA</option>
+                            <option value="Full Digital System" data-i18n="form_svc_4">Système Digital Complet</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="budget" data-i18n="form_budget_label">Budget estimé</label>
+                        <select id="budget" data-i18n-opt="form_budget" required>
+                            <option value="" data-i18n="form_budget_ph">Choisissez une fourchette</option>
+                            <option value="$200 - $500"  data-i18n="form_budget_1">200$ – 500$</option>
+                            <option value="$500 - $1000" data-i18n="form_budget_2">500$ – 1 000$</option>
+                            <option value="$1000+"       data-i18n="form_budget_3">1 000$+</option>
+                            <option value="Not sure yet" data-i18n="form_budget_4">Pas encore décidé</option>
+                        </select>
+                    </div>
+                    <div class="form-row full">
+                        <label for="details" data-i18n="form_details_label">Détails du projet</label>
+                        <textarea id="details" data-i18n-ph="form_details_ph" placeholder="Dites-nous ce que vous voulez construire..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-btn magnetic">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;flex-shrink:0" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        <span data-i18n="form_submit">Envoyer via WhatsApp</span>
+                    </button>
+                    <p class="form-note" data-i18n="form_note">Votre message s'ouvrira directement dans WhatsApp. Rapide et professionnel.</p>
+                </form>
+            </div>
+        </section>
+
     </main>
 
-    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" class="whatsapp-float" target="_blank">
-        <span>WhatsApp</span>
-        <b>✆</b>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" class="whatsapp-float" target="_blank" rel="noopener">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <span data-i18n="wa_label">WhatsApp</span>
     </a>
 
+    <!-- Footer -->
     <footer class="footer">
-        <h3>TIMBI AI</h3>
-        <p>AI Websites • Branding • Automation</p>
-        <p>Istanbul, Türkiye</p>
-        <small>© <span id="year"></span> TIMBI AI. All rights reserved.</small>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="logo-mark" style="width:40px;height:40px;font-size:21px;border-radius:12px;">T</span>
+                <span class="logo-text">TIMBI AI</span>
+            </div>
+            <p class="footer-tagline" data-i18n="footer_tagline">Sites Web IA · Branding · Automatisation</p>
+            <div class="footer-links">
+                <a href="#home"     data-i18n="footer_home">Accueil</a>
+                <a href="#why"      data-i18n="footer_why">Pourquoi nous</a>
+                <a href="#services" data-i18n="footer_services">Services</a>
+                <a href="#pricing"  data-i18n="footer_pricing">Tarifs</a>
+                <a href="#contact"  data-i18n="footer_contact">Contact</a>
+            </div>
+            <p class="footer-location" data-i18n="footer_location">📍 Istanbul, Türkiye</p>
+            <small>© <span id="year"></span> TIMBI AI. All rights reserved.</small>
+        </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
