@@ -1,495 +1,275 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMBI AI | Premium AI Websites & Automation</title>
-    <meta name="description" content="TIMBI AI builds premium AI-powered websites, branding systems and automation workflows for modern businesses. Based in Istanbul.">
-    <meta name="keywords" content="TIMBI AI, AI websites, web design, automation, branding, Istanbul, Turkey">
+    <title>TIMBI AI | Premium websites, branding & AI automation</title>
+    <meta name="description" content="TIMBI AI builds premium websites, brand identities and WhatsApp automation for ambitious businesses. Based in Istanbul, working in English, French and Turkish.">
     <meta name="author" content="TIMBI AI">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="TIMBI AI | Premium AI Websites & Automation">
-    <meta property="og:description" content="Premium websites, branding and AI automation systems built for ambitious businesses.">
+    <meta property="og:title" content="TIMBI AI | Websites people remember">
+    <meta property="og:description" content="Premium websites, brand identities and WhatsApp automation. Istanbul · EN / FR / TR.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://timbiai.com">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#d4af37">
+    <meta name="theme-color" content="#07070a">
     <link rel="canonical" href="https://timbiai.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <a class="skip" href="#mainContent" data-i18n="skip">Skip to content</a>
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-inner">
-            <div class="loader-mark">T</div>
-            <div class="loader-ring"></div>
-        </div>
-        <p class="loader-label">TIMBI AI</p>
-        <p class="loader-sub">Premium AI Agency</p>
-    </div>
+    <!-- One fixed WebGL scene behind the whole page: sphere → flow → T -->
+    <canvas id="heroGL" class="gl" aria-hidden="true"></canvas>
+    <div class="gl-fallback" aria-hidden="true"></div>
 
-    <!-- Background -->
-    <div class="site-bg">
-        <div class="orb orb-one" id="orbOne"></div>
-        <div class="orb orb-two" id="orbTwo"></div>
-        <div class="grid-overlay"></div>
-        <div class="noise-overlay"></div>
-    </div>
-
-    <!-- Navbar -->
     <header class="navbar" id="navbar">
-        <a href="#home" class="logo">
+        <a href="#home" class="logo" aria-label="TIMBI AI">
             <span class="logo-mark">T</span>
             <span class="logo-text">TIMBI AI</span>
         </a>
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-            <span></span><span></span><span></span>
-        </button>
-
         <nav class="nav-links" id="navLinks">
-            <a href="#home"     data-i18n="nav_home">Home</a>
             <a href="#services" data-i18n="nav_services">Services</a>
-            <a href="#work"     data-i18n="nav_work">Portfolio</a>
-            <a href="#pricing"  data-i18n="nav_pricing">Pricing</a>
-            <a href="#contact" class="nav-cta" data-i18n="nav_cta">Start a Project</a>
+            <a href="#work"     data-i18n="nav_work">Work</a>
+            <a href="#pricing"  data-i18n="nav_pricing">Packages</a>
+            <a href="#contact"  class="nav-cta" data-i18n="nav_cta">Start a project</a>
         </nav>
-
-        <!-- Language Switcher -->
-        <div class="lang-switch" id="langSwitch">
-            <button class="lang-current" id="langToggle" aria-label="Switch language" aria-expanded="false">
-                <span class="lang-flag" id="currentFlag">🇬🇧</span>
-                <span class="lang-code" id="currentCode">EN</span>
-                <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </button>
-            <div class="lang-dropdown" id="langDropdown">
-                <button class="lang-option" data-lang="en">
-                    <span class="lang-opt-flag">🇬🇧</span><span>English</span>
+        <div class="nav-right">
+            <div class="lang-switch" id="langSwitch">
+                <button class="lang-current" id="langToggle" aria-label="Language" aria-expanded="false">
+                    <span class="lang-flag" id="currentFlag">🇬🇧</span>
+                    <span class="lang-code" id="currentCode">EN</span>
                 </button>
-                <button class="lang-option" data-lang="fr">
-                    <span class="lang-opt-flag">🇫🇷</span><span>Français</span>
-                </button>
-                <button class="lang-option" data-lang="tr">
-                    <span class="lang-opt-flag">🇹🇷</span><span>Türkçe</span>
-                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-option" data-lang="en"><span>🇬🇧</span><span>English</span></button>
+                    <button class="lang-option" data-lang="fr"><span>🇫🇷</span><span>Français</span></button>
+                    <button class="lang-option" data-lang="tr"><span>🇹🇷</span><span>Türkçe</span></button>
+                </div>
             </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span>
+            </button>
         </div>
     </header>
 
     <main id="mainContent">
 
-        <!-- ══════════════ HERO ══════════════ -->
-        <section class="hero section" id="home">
-            <div class="hero-content reveal">
-                <p class="eyebrow" data-i18n="hero_eyebrow">AI WEBSITES · BRANDING · AUTOMATION</p>
-                <h1 data-i18n="hero_h1">We build websites that make your business look <span class="gold-text">seriously premium.</span></h1>
-                <p class="hero-text" data-i18n="hero_text">TIMBI AI creates high-end websites, sharp brand identities and smart automation systems for businesses ready to grow. Based in Istanbul, built for the world.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="hero_btn_primary">Start a Project</a>
-                    <a href="#work"    class="btn btn-secondary"        data-i18n="hero_btn_secondary">See Our Work</a>
-                </div>
-                <div class="trust-row">
-                    <div>
-                        <strong>48h</strong>
-                        <span data-i18n="trust_1">Concept preview</span>
-                    </div>
-                    <div>
-                        <strong>100%</strong>
-                        <span data-i18n="trust_2">Mobile-ready</span>
-                    </div>
-                    <div>
-                        <strong data-i18n="trust_3_val">AI</strong>
-                        <span   data-i18n="trust_3">Automation built-in</span>
+        <!-- ══════════ HERO — sphere ══════════ -->
+        <section class="hero" id="home" data-gl="sphere">
+            <div class="wrap">
+                <div class="hero-content">
+                    <p class="eyebrow" data-i18n="hero_eyebrow">Websites · Branding · AI automation</p>
+                    <h1><span data-i18n="hero_h1a">Websites people</span> <span class="accent" data-i18n="hero_h1b">remember.</span></h1>
+                    <p class="lead" data-i18n="hero_text">Premium websites, brand identities and WhatsApp automation for ambitious businesses. Based in Istanbul, working in English, French and Turkish.</p>
+                    <div class="actions">
+                        <a href="#contact" class="btn btn-primary magnetic" data-i18n="hero_btn_primary">Get a concept in 48h</a>
+                        <a href="#work" class="text-link" data-i18n="hero_btn_secondary">See our work →</a>
                     </div>
                 </div>
             </div>
-
-            <div class="hero-panel reveal">
-                <div class="panel-top">
-                    <span></span><span></span><span></span>
-                    <p>timbiai.com</p>
-                </div>
-                <div class="panel-card main-card">
-                    <small data-i18n="panel_small">Premium Digital System</small>
-                    <h3 data-i18n="panel_h3">Website + Brand + AI Workflow</h3>
-                    <div class="progress-line"><span></span></div>
-                </div>
-                <div class="mini-grid">
-                    <div class="panel-card">
-                        <b data-i18n="panel_1_b">Brand</b>
-                        <span data-i18n="panel_1_s">Luxury positioning</span>
-                    </div>
-                    <div class="panel-card">
-                        <b data-i18n="panel_2_b">Web</b>
-                        <span data-i18n="panel_2_s">Fast & premium</span>
-                    </div>
-                    <div class="panel-card">
-                        <b data-i18n="panel_3_b">AI</b>
-                        <span data-i18n="panel_3_s">Smart workflows</span>
-                    </div>
-                    <div class="panel-card">
-                        <b data-i18n="panel_4_b">Growth</b>
-                        <span data-i18n="panel_4_s">More conversions</span>
-                    </div>
-                </div>
-            </div>
+            <p class="hero-hint" aria-hidden="true" data-i18n="hero_hint">Move · Tap the sphere</p>
         </section>
 
-        <!-- ══════════════ INDUSTRIES STRIP ══════════════ -->
-        <div class="logos-wrapper">
-            <div class="logos reveal">
-                <span data-i18n="logos_1">Medical clinics</span>
-                <span class="sep">·</span>
-                <span data-i18n="logos_2">Restaurants</span>
-                <span class="sep">·</span>
-                <span data-i18n="logos_3">Real estate</span>
-                <span class="sep">·</span>
-                <span data-i18n="logos_4">Beauty brands</span>
-                <span class="sep">·</span>
-                <span data-i18n="logos_5">Local services</span>
-                <span class="sep">·</span>
-                <span data-i18n="logos_6">E-commerce</span>
+        <!-- ══════════ INDUSTRIES ══════════ -->
+        <div class="marquee" aria-label="Industries">
+            <div class="marquee-track">
+                <span data-i18n="logos_1">Medical clinics</span><span data-i18n="logos_2">Restaurants</span><span data-i18n="logos_3">Real estate</span><span data-i18n="logos_4">Beauty brands</span><span data-i18n="logos_5">Local services</span><span data-i18n="logos_6">E-commerce</span><span data-i18n="logos_7">Money transfer</span>
+                <span aria-hidden="true" data-i18n="logos_1">Medical clinics</span><span aria-hidden="true" data-i18n="logos_2">Restaurants</span><span aria-hidden="true" data-i18n="logos_3">Real estate</span><span aria-hidden="true" data-i18n="logos_4">Beauty brands</span><span aria-hidden="true" data-i18n="logos_5">Local services</span><span aria-hidden="true" data-i18n="logos_6">E-commerce</span><span aria-hidden="true" data-i18n="logos_7">Money transfer</span>
             </div>
         </div>
 
-        <!-- ══════════════ SERVICES ══════════════ -->
-        <section class="services section" id="services">
-            <div class="section-title reveal">
-                <p class="eyebrow" data-i18n="svc_eyebrow">What we build</p>
-                <h2 data-i18n="svc_h2">Everything your business needs to look professional online.</h2>
-                <p data-i18n="svc_p">Not just a pretty website. A complete digital system designed to bring you more clients.</p>
-            </div>
-            <div class="cards">
-                <article class="card reveal">
-                    <div class="icon">✦</div>
-                    <h3 data-i18n="svc_1_h3">Premium Web Design</h3>
-                    <p   data-i18n="svc_1_p">Fast, clean and beautiful websites that make visitors trust your business in seconds.</p>
-                </article>
-                <article class="card reveal">
-                    <div class="icon">⚡</div>
-                    <h3 data-i18n="svc_2_h3">AI Automation</h3>
-                    <p   data-i18n="svc_2_p">Automated replies, lead capture and smart workflows that work for you 24 hours a day.</p>
-                </article>
-                <article class="card reveal">
-                    <div class="icon">◆</div>
-                    <h3 data-i18n="svc_3_h3">Brand Identity</h3>
-                    <p   data-i18n="svc_3_p">Logo, colors, typography and visual direction that make your brand look expensive from day one.</p>
-                </article>
-                <article class="card reveal">
-                    <div class="icon">↗</div>
-                    <h3 data-i18n="svc_4_h3">Digital Growth</h3>
-                    <p   data-i18n="svc_4_p">Conversion-focused structure, clear call-to-actions and SEO foundations to get you found online.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- ══════════════ PORTFOLIO ══════════════ -->
-        <section class="work section" id="work">
-            <div class="section-title reveal">
-                <p class="eyebrow" data-i18n="work_eyebrow">Our work</p>
-                <h2 data-i18n="work_h2">Built for businesses that want to stand out.</h2>
-                <p data-i18n="work_p">Real client projects, plus design concepts TIMBI AI can build and adapt for your business.</p>
-            </div>
-            <div class="portfolio-grid">
-
-                <!-- THIALLOU SERVICES — real client project -->
-                <article class="project-card large real reveal">
-                    <a class="project-preview preview-thiase" href="https://thiase-site.vercel.app/" target="_blank" rel="noopener" aria-label="Thiallou Services">
-                        <div class="pv-bar"><span></span><span></span><span></span><em>thiase-site.vercel.app</em></div>
-                        <div class="th-nav"><strong>THIALLOU<b>SERVICES</b></strong><span>WhatsApp</span></div>
-                        <div class="th-hero">
-                            <small>Conakry · Guinée</small>
-                            <p class="th-h1">Recevez en Guinée.<br>Envoyez partout dans le monde.</p>
-                            <div class="th-cta"><span class="fill">WhatsApp</span><span>Appeler</span><span>Itinéraire</span></div>
-                        </div>
-                        <div class="th-networks">
-                            <span>Western Union</span><span>Ria</span><span>Orange Money</span><span>Wave</span><span>Paycard</span><span>+3</span>
-                        </div>
-                    </a>
-                    <div class="project-info">
-                        <div class="project-tag live" data-i18n="proj_0_tag">Client project · Live</div>
-                        <h3>Thiallou Services</h3>
-                        <p data-i18n="proj_0_p">Website for a money transfer agency in Conakry, Guinea: 8 transfer networks, opening hours, map directions and one-tap WhatsApp and call buttons.</p>
-                        <a class="project-link" href="https://thiase-site.vercel.app/" target="_blank" rel="noopener" data-i18n="proj_0_link">View live site →</a>
-                    </div>
-                </article>
-
-                <!-- BARBER -->
-                <article class="project-card reveal">
-                    <div class="project-preview preview-barber">
-                        <div class="pv-bar"><span></span><span></span><span></span></div>
-                        <div class="pv-barber-nav">
-                            <div class="pv-logo"></div>
-                            <div class="pv-nav-links"><span></span><span></span><span></span></div>
-                            <div class="pv-nav-btn"></div>
-                        </div>
-                        <div class="pv-barber-hero">
-                            <div class="pv-barber-eyebrow"></div>
-                            <div class="pv-barber-h1 w80"></div>
-                            <div class="pv-barber-h1 w60"></div>
-                            <div class="pv-barber-sub"></div>
-                            <div class="pv-barber-sub" style="width:80%"></div>
-                            <div class="pv-barber-cta"><div class="btn-g"></div><div class="btn-o"></div></div>
-                        </div>
-                        <div class="pv-reviews">
-                            <div class="pv-stars">
-                                <div class="pv-star"></div><div class="pv-star"></div><div class="pv-star"></div><div class="pv-star"></div><div class="pv-star"></div>
-                            </div>
-                            <div class="pv-review-text"></div>
-                        </div>
-                        <div class="pv-barber-services">
-                            <div class="pv-service"><div class="pv-service-icon"></div><div class="pv-service-title"></div><div class="pv-service-price"></div></div>
-                            <div class="pv-service"><div class="pv-service-icon"></div><div class="pv-service-title"></div><div class="pv-service-price"></div></div>
-                            <div class="pv-service"><div class="pv-service-icon"></div><div class="pv-service-title"></div><div class="pv-service-price"></div></div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag" data-i18n="proj_1_tag">Luxury Service</div>
-                        <h3 data-i18n="proj_1_h3">Premium Barbershop Website</h3>
-                        <p  data-i18n="proj_1_p">Booking-focused homepage with strong visuals, pricing, reviews and WhatsApp lead capture.</p>
-                    </div>
-                </article>
-
-                <!-- CLINIC -->
-                <article class="project-card reveal">
-                    <div class="project-preview preview-clinic">
-                        <div class="pv-bar"><span></span><span></span><span></span></div>
-                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
-                        <div class="pv-clinic-hero">
-                            <div class="pv-clinic-text">
-                                <div class="pv-clinic-badge"></div>
-                                <div class="pv-clinic-h1"></div><div class="pv-clinic-h2"></div>
-                                <div class="pv-clinic-sub"></div><div class="pv-clinic-sub w75"></div>
-                                <div class="pv-clinic-cta"></div>
-                            </div>
-                            <div class="pv-clinic-card">
-                                <div class="pv-clinic-cross"></div>
-                                <div class="pv-clinic-slot full"></div><div class="pv-clinic-slot half"></div>
-                                <div class="pv-clinic-slot full"></div><div class="pv-clinic-slot half"></div>
-                            </div>
-                        </div>
-                        <div class="pv-clinic-trust"><div class="pv-trust-item"></div><div class="pv-trust-item"></div><div class="pv-trust-item"></div></div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag" data-i18n="proj_2_tag">Healthcare</div>
-                        <h3 data-i18n="proj_2_h3">Medical Clinic Landing Page</h3>
-                        <p  data-i18n="proj_2_p">Trust-first design with services, reviews and appointment CTA.</p>
-                    </div>
-                </article>
-
-                <!-- RESTAURANT -->
-                <article class="project-card reveal">
-                    <div class="project-preview preview-restaurant">
-                        <div class="pv-bar"><span></span><span></span><span></span></div>
-                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
-                        <div class="pv-resto-hero">
-                            <div class="pv-resto-label"></div>
-                            <div class="pv-resto-h1 w75"></div><div class="pv-resto-h1" style="width:55%"></div>
-                            <div class="pv-resto-cta"><div class="pv-resto-btn fill"></div><div class="pv-resto-btn out"></div></div>
-                        </div>
-                        <div class="pv-menu">
-                            <div class="pv-menu-title"></div>
-                            <div class="pv-menu-item"><div class="pv-menu-left"><div class="pv-mi-name"></div><div class="pv-mi-desc"></div></div><div class="pv-mi-price"></div></div>
-                            <div class="pv-menu-item"><div class="pv-menu-left"><div class="pv-mi-name" style="width:60px"></div><div class="pv-mi-desc"></div></div><div class="pv-mi-price"></div></div>
-                            <div class="pv-menu-item"><div class="pv-menu-left"><div class="pv-mi-name" style="width:55px"></div><div class="pv-mi-desc"></div></div><div class="pv-mi-price"></div></div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag" data-i18n="proj_3_tag">Food & Beverage</div>
-                        <h3 data-i18n="proj_3_h3">Restaurant Brand System</h3>
-                        <p  data-i18n="proj_3_p">Visual identity, menu page, social assets and delivery integration.</p>
-                    </div>
-                </article>
-
-                <!-- REAL ESTATE -->
-                <article class="project-card reveal">
-                    <div class="project-preview preview-realestate">
-                        <div class="pv-bar"><span></span><span></span><span></span></div>
-                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
-                        <div class="pv-realty-search"><div class="pv-search-bar"><div class="pv-search-icon"></div><div class="pv-search-text"></div><div class="pv-search-go"></div></div></div>
-                        <div class="pv-realty-listings">
-                            <div class="pv-listing"><div class="pv-listing-img"></div><div class="pv-listing-info"><div class="pv-listing-name"></div><div class="pv-listing-loc"></div><div class="pv-listing-price"></div></div></div>
-                            <div class="pv-listing"><div class="pv-listing-img" style="background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(99,102,241,.08))"></div><div class="pv-listing-info"><div class="pv-listing-name" style="width:60%"></div><div class="pv-listing-loc"></div><div class="pv-listing-price"></div></div></div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag" data-i18n="proj_4_tag">Real Estate</div>
-                        <h3 data-i18n="proj_4_h3">Property Agency Website</h3>
-                        <p  data-i18n="proj_4_p">Clean listing pages, lead forms and premium brand positioning.</p>
-                    </div>
-                </article>
-
-                <!-- DASHBOARD -->
-                <article class="project-card reveal">
-                    <div class="project-preview preview-dashboard">
-                        <div class="pv-bar"><span></span><span></span><span></span></div>
-                        <div class="pv-nav"><div class="pv-logo"></div><div class="pv-nav-links"><span></span><span></span></div><div class="pv-nav-btn"></div></div>
-                        <div class="pv-metrics">
-                            <div class="pv-metric"><div class="pv-metric-val g"></div><div class="pv-metric-lbl"></div></div>
-                            <div class="pv-metric"><div class="pv-metric-val b"></div><div class="pv-metric-lbl"></div></div>
-                            <div class="pv-metric"><div class="pv-metric-val p"></div><div class="pv-metric-lbl"></div></div>
-                        </div>
-                        <div class="pv-chart">
-                            <div class="pv-chart-bars">
-                                <div class="pv-cb"></div><div class="pv-cb"></div><div class="pv-cb"></div><div class="pv-cb"></div>
-                                <div class="pv-cb"></div><div class="pv-cb"></div><div class="pv-cb"></div>
-                            </div>
-                            <div class="pv-chart-axis"></div>
-                        </div>
-                        <div class="pv-dash-table">
-                            <div class="pv-table-row"><div class="pv-row-dot g"></div><div class="pv-row-name"></div><div class="pv-row-val"></div></div>
-                            <div class="pv-table-row"><div class="pv-row-dot y"></div><div class="pv-row-name" style="width:65%"></div><div class="pv-row-val" style="background:rgba(212,175,55,.35)"></div></div>
-                            <div class="pv-table-row"><div class="pv-row-dot p"></div><div class="pv-row-name" style="width:80%"></div><div class="pv-row-val" style="background:rgba(139,92,246,.35)"></div></div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tag" data-i18n="proj_5_tag">AI System</div>
-                        <h3 data-i18n="proj_5_h3">Automation Dashboard</h3>
-                        <p  data-i18n="proj_5_p">Lead management, smart replies and workflow overview for small teams.</p>
-                    </div>
-                </article>
-
+        <!-- ══════════ SERVICES — flow ══════════ -->
+        <section class="section services" id="services" data-gl="flow">
+            <div class="wrap split">
+                <div class="split-space" aria-hidden="true"></div>
+                <div>
+                    <p class="eyebrow" data-i18n="svc_eyebrow">What we build</p>
+                    <h2 data-i18n="svc_h2">One studio for your whole online presence.</h2>
+                    <ol class="svc-list">
+                        <li class="svc reveal">
+                            <h3 data-i18n="svc_1_h3">Premium web design</h3>
+                            <p data-i18n="svc_1_p">Fast, polished websites that make visitors trust your business within seconds.</p>
+                            <div class="tags"><span data-i18n="svc_1_t1">Websites</span><span data-i18n="svc_1_t2">Landing pages</span><span data-i18n="svc_1_t3">Mobile-first</span></div>
+                        </li>
+                        <li class="svc reveal">
+                            <h3 data-i18n="svc_2_h3">AI automation</h3>
+                            <p data-i18n="svc_2_p">Automatic replies, lead capture and workflows that keep working for you 24 hours a day.</p>
+                            <div class="tags"><span>WhatsApp</span><span data-i18n="svc_2_t2">Lead capture</span><span data-i18n="svc_2_t3">Workflows</span></div>
+                        </li>
+                        <li class="svc reveal">
+                            <h3 data-i18n="svc_3_h3">Brand identity</h3>
+                            <p data-i18n="svc_3_p">Logo, colours, typography and a visual direction that make your brand look established from day one.</p>
+                            <div class="tags"><span data-i18n="svc_3_t1">Logo</span><span data-i18n="svc_3_t2">Colours</span><span data-i18n="svc_3_t3">Typography</span></div>
+                        </li>
+                        <li class="svc reveal">
+                            <h3 data-i18n="svc_4_h3">Digital growth</h3>
+                            <p data-i18n="svc_4_p">A structure built to convert, clear calls to action and SEO foundations so people find you.</p>
+                            <div class="tags"><span>SEO</span><span data-i18n="svc_4_t2">Conversion</span><span data-i18n="svc_4_t3">Calls to action</span></div>
+                        </li>
+                    </ol>
+                </div>
             </div>
         </section>
 
-        <!-- ══════════════ PRICING ══════════════ -->
-        <section class="pricing section" id="pricing">
-            <div class="section-title reveal">
-                <p class="eyebrow" data-i18n="price_eyebrow">Pricing</p>
-                <h2 data-i18n="price_h2">Simple, clear packages for serious businesses.</h2>
-                <p data-i18n="price_p">Every project starts with a conversation. These are the starting points.</p>
-            </div>
-            <div class="pricing-grid">
-                <article class="price-card reveal">
-                    <h3 data-i18n="plan_1_h3">Starter</h3>
-                    <p class="price" data-i18n="plan_1_price">Landing Page</p>
-                    <ul>
-                        <li data-i18n="plan_1_1">1 premium page</li>
-                        <li data-i18n="plan_1_2">Responsive design</li>
-                        <li data-i18n="plan_1_3">Basic SEO setup</li>
-                        <li data-i18n="plan_1_4">WhatsApp CTA button</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary" data-i18n="plan_1_btn">Get Started</a>
-                </article>
-                <article class="price-card featured reveal">
-                    <div class="popular" data-i18n="plan_2_popular">Most popular</div>
-                    <h3 data-i18n="plan_2_h3">Premium</h3>
-                    <p class="price" data-i18n="plan_2_price">Website + Brand</p>
-                    <ul>
-                        <li data-i18n="plan_2_1">Full multi-section website</li>
-                        <li data-i18n="plan_2_2">Premium visual identity</li>
-                        <li data-i18n="plan_2_3">Conversion copywriting</li>
-                        <li data-i18n="plan_2_4">Contact & social setup</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="plan_2_btn">Get Started</a>
-                </article>
-                <article class="price-card reveal">
-                    <h3 data-i18n="plan_3_h3">Elite AI</h3>
-                    <p class="price" data-i18n="plan_3_price">Full System</p>
-                    <ul>
-                        <li data-i18n="plan_3_1">Website + brand system</li>
-                        <li data-i18n="plan_3_2">AI automation workflow</li>
-                        <li data-i18n="plan_3_3">Lead capture strategy</li>
-                        <li data-i18n="plan_3_4">Growth-ready structure</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-secondary" data-i18n="plan_3_btn">Get Started</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- ══════════════ CONTACT ══════════════ -->
-        <section class="contact-section section" id="contact">
-            <div class="contact-grid">
-                <div class="contact-copy reveal">
-                    <p class="eyebrow" data-i18n="contact_eyebrow">Start your project</p>
-                    <h2 data-i18n="contact_h2">Tell us what you need. We'll get back to you fast.</h2>
-                    <p data-i18n="contact_p">Fill in the form and WhatsApp will open with your message already prepared. Fast and professional.</p>
-                    <div class="contact-highlights">
-                        <div><strong>01</strong><span data-i18n="contact_hl_1">Describe your business</span></div>
-                        <div><strong>02</strong><span data-i18n="contact_hl_2">Choose your service</span></div>
-                        <div><strong>03</strong><span data-i18n="contact_hl_3">Send directly on WhatsApp</span></div>
+        <!-- ══════════ PROCESS — flow ══════════ -->
+        <section class="section process" id="process" data-gl="flow">
+            <div class="wrap split">
+                <div class="split-space" aria-hidden="true"></div>
+                <div>
+                    <p class="eyebrow" data-i18n="proc_eyebrow">How it works</p>
+                    <h2 data-i18n="proc_h2">From a message to a live website.</h2>
+                    <div class="steps">
+                        <div class="step reveal"><b>1</b><div><h3 data-i18n="proc_1_h3">You message us</h3><p data-i18n="proc_1_p">One WhatsApp message is enough: your business, your goals, your budget.</p></div></div>
+                        <div class="step reveal"><b>2</b><div><h3 data-i18n="proc_2_h3">Concept in 48h</h3><p data-i18n="proc_2_p">We send you a first visual direction for your site within 48 hours.</p></div></div>
+                        <div class="step reveal"><b>3</b><div><h3 data-i18n="proc_3_h3">Launch</h3><p data-i18n="proc_3_p">We refine it together, then put your site online, ready for mobile.</p></div></div>
                     </div>
                 </div>
-
-                <form class="project-form reveal" id="projectForm">
-                    <div class="form-row">
-                        <label for="name" data-i18n="form_name_label">Your name</label>
-                        <input type="text" id="name" data-i18n-ph="form_name_ph" placeholder="Example: Amadou" required>
-                    </div>
-                    <div class="form-row">
-                        <label for="business" data-i18n="form_biz_label">Business type</label>
-                        <input type="text" id="business" data-i18n-ph="form_biz_ph" placeholder="Restaurant, clinic, barber..." required>
-                    </div>
-                    <div class="form-row">
-                        <label for="service" data-i18n="form_svc_label">Service needed</label>
-                        <select id="service" required>
-                            <option value="" data-i18n="form_svc_ph">Choose a service</option>
-                            <option value="Premium Website"     data-i18n="form_svc_1">Premium Website</option>
-                            <option value="Brand Identity"      data-i18n="form_svc_2">Brand Identity</option>
-                            <option value="AI Automation"       data-i18n="form_svc_3">AI Automation</option>
-                            <option value="Full Digital System" data-i18n="form_svc_4">Full Digital System</option>
-                        </select>
-                    </div>
-                    <div class="form-row">
-                        <label for="budget" data-i18n="form_budget_label">Estimated budget</label>
-                        <select id="budget" required>
-                            <option value="" data-i18n="form_budget_ph">Choose a range</option>
-                            <option value="$200-$500"  data-i18n="form_budget_1">$200 – $500</option>
-                            <option value="$500-$1000" data-i18n="form_budget_2">$500 – $1,000</option>
-                            <option value="$1000+"     data-i18n="form_budget_3">$1,000+</option>
-                            <option value="Not sure"   data-i18n="form_budget_4">Not sure yet</option>
-                        </select>
-                    </div>
-                    <div class="form-row full">
-                        <label for="details" data-i18n="form_details_label">Project details</label>
-                        <textarea id="details" data-i18n-ph="form_details_ph" placeholder="Tell us what you want to build..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary form-btn magnetic">
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                        <span data-i18n="form_submit">Send via WhatsApp</span>
-                    </button>
-                    <p class="form-note" data-i18n="form_note">Your message opens directly in WhatsApp. Fast and professional.</p>
-                </form>
             </div>
         </section>
 
+        <!-- ══════════ WORK — dim ══════════ -->
+        <section class="section work" id="work" data-gl="dim">
+            <div class="wrap">
+                <div class="head">
+                    <p class="eyebrow" data-i18n="work_eyebrow">Our work</p>
+                    <h2 data-i18n="work_h2">Real projects, live online.</h2>
+                </div>
+                <div class="work-grid">
+                    <a class="case reveal" href="https://thiase-site.vercel.app/" target="_blank" rel="noopener">
+                        <div class="case-preview">
+                            <div class="pv-bar"><span></span><span></span><span></span><em>thiase-site.vercel.app</em></div>
+                            <div class="th-nav"><strong>THIALLOU<b>SERVICES</b></strong><span>WhatsApp</span></div>
+                            <div class="th-hero">
+                                <small>Conakry · Guinée</small>
+                                <p class="th-h1">Recevez en Guinée.<br>Envoyez partout dans le monde.</p>
+                                <div class="th-cta"><span class="fill">WhatsApp</span><span>Appeler</span><span>Itinéraire</span></div>
+                            </div>
+                            <div class="th-networks"><span>Western Union</span><span>Ria</span><span>Orange Money</span><span>Wave</span><span>Paycard</span><span>+3</span></div>
+                        </div>
+                        <div class="case-info">
+                            <p class="live" data-i18n="proj_0_tag">Client project · Live</p>
+                            <h3>Thiallou Services</h3>
+                            <p data-i18n="proj_0_p">Website for a money transfer agency in Conakry, Guinea: 8 transfer networks, opening hours, map directions and one-tap WhatsApp and call buttons.</p>
+                            <span class="text-link" data-i18n="proj_0_link">View live site →</span>
+                        </div>
+                    </a>
+                    <a class="case case-next reveal" href="#contact">
+                        <span class="next-mark" aria-hidden="true">+</span>
+                        <h3 data-i18n="next_h3">Your project next?</h3>
+                        <p data-i18n="next_p">Clinic, restaurant, agency or shop: tell us about your business and get a first concept in 48 hours.</p>
+                        <span class="text-link" data-i18n="next_link">Start a project →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ PACKAGES — dim ══════════ -->
+        <section class="section pricing" id="pricing" data-gl="dim">
+            <div class="wrap">
+                <div class="head">
+                    <p class="eyebrow" data-i18n="price_eyebrow">Packages</p>
+                    <h2 data-i18n="price_h2">Three starting points.</h2>
+                    <p class="lead" data-i18n="price_p">Every project starts with a conversation. Tell us your budget and we tailor the package.</p>
+                </div>
+                <div class="plans">
+                    <article class="plan reveal">
+                        <h3 data-i18n="plan_1_h3">Starter</h3>
+                        <p class="plan-kind" data-i18n="plan_1_price">Landing page</p>
+                        <ul>
+                            <li data-i18n="plan_1_1">1 premium page</li>
+                            <li data-i18n="plan_1_2">Responsive design</li>
+                            <li data-i18n="plan_1_3">Basic SEO setup</li>
+                            <li data-i18n="plan_1_4">WhatsApp button</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-ghost" data-plan="1" data-i18n="plan_btn">Choose</a>
+                    </article>
+                    <article class="plan plan-hot reveal">
+                        <p class="badge" data-i18n="plan_2_popular">Most popular</p>
+                        <h3 data-i18n="plan_2_h3">Premium</h3>
+                        <p class="plan-kind" data-i18n="plan_2_price">Website + brand</p>
+                        <ul>
+                            <li data-i18n="plan_2_1">Full multi-section website</li>
+                            <li data-i18n="plan_2_2">Premium visual identity</li>
+                            <li data-i18n="plan_2_3">Conversion copywriting</li>
+                            <li data-i18n="plan_2_4">Contact & social setup</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" data-plan="2" data-i18n="plan_btn">Choose</a>
+                    </article>
+                    <article class="plan reveal">
+                        <h3 data-i18n="plan_3_h3">Elite AI</h3>
+                        <p class="plan-kind" data-i18n="plan_3_price">Full system</p>
+                        <ul>
+                            <li data-i18n="plan_3_1">Website + brand system</li>
+                            <li data-i18n="plan_3_2">AI automation workflow</li>
+                            <li data-i18n="plan_3_3">Lead capture strategy</li>
+                            <li data-i18n="plan_3_4">Growth-ready structure</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-ghost" data-plan="3" data-i18n="plan_btn">Choose</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════ CONTACT — logo ══════════ -->
+        <section class="section contact" id="contact" data-gl="logo">
+            <div class="wrap split split-rev">
+                <div>
+                    <p class="eyebrow" data-i18n="contact_eyebrow">Start your project</p>
+                    <h2 data-i18n="contact_h2">Tell us what you need.</h2>
+                    <p class="lead" data-i18n="contact_p">Fill in the form: WhatsApp opens with your message ready to send.</p>
+                    <form class="form" id="projectForm" novalidate>
+                        <label><span data-i18n="form_name_label">Your name</span>
+                            <input type="text" id="name" autocomplete="name" data-i18n-ph="form_name_ph" placeholder="Example: Amadou" required></label>
+                        <label><span data-i18n="form_biz_label">Business type</span>
+                            <input type="text" id="business" data-i18n-ph="form_biz_ph" placeholder="Restaurant, clinic, barber..." required></label>
+                        <label><span data-i18n="form_svc_label">Service needed</span>
+                            <select id="service" required>
+                                <option value="" data-i18n="form_svc_ph">Choose a service</option>
+                                <option data-i18n="form_svc_1">Premium website</option>
+                                <option data-i18n="form_svc_2">Brand identity</option>
+                                <option data-i18n="form_svc_3">AI automation</option>
+                                <option data-i18n="form_svc_4">Full digital system</option>
+                            </select></label>
+                        <label><span data-i18n="form_budget_label">Estimated budget</span>
+                            <select id="budget" required>
+                                <option value="" data-i18n="form_budget_ph">Choose a range</option>
+                                <option>$200 – $500</option>
+                                <option>$500 – $1,000</option>
+                                <option>$1,000+</option>
+                                <option data-i18n="form_budget_4">Not sure yet</option>
+                            </select></label>
+                        <label class="full"><span data-i18n="form_details_label">Project details (optional)</span>
+                            <textarea id="details" rows="3" data-i18n-ph="form_details_ph" placeholder="Tell us what you want to build..."></textarea></label>
+                        <button type="submit" class="btn btn-primary form-btn full" data-i18n="form_submit">Send via WhatsApp</button>
+                        <p class="form-feedback full" id="formFeedback" role="status" aria-live="polite"></p>
+                    </form>
+                    <p class="direct"><span data-i18n="contact_direct">Or write directly:</span> <a href="https://wa.me/905467653562" target="_blank" rel="noopener">+90 546 765 35 62</a></p>
+                </div>
+                <div class="split-space" aria-hidden="true"></div>
+            </div>
+        </section>
     </main>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI%2C%20I%20want%20to%20start%20a%20project" class="whatsapp-float" target="_blank" rel="noopener">
-        <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        <span data-i18n="wa_label">WhatsApp</span>
-    </a>
-
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <span class="logo-mark" style="width:40px;height:40px;font-size:20px;border-radius:11px;">T</span>
-                <span class="logo-text">TIMBI AI</span>
-            </div>
-            <p class="footer-tagline" data-i18n="footer_tagline">AI Websites · Branding · Automation</p>
-            <div class="footer-links">
-                <a href="#home"     data-i18n="footer_home">Home</a>
-                <a href="#services" data-i18n="footer_services">Services</a>
-                <a href="#work"     data-i18n="footer_work">Work</a>
-                <a href="#pricing"  data-i18n="footer_pricing">Pricing</a>
-                <a href="#contact"  data-i18n="footer_contact">Contact</a>
-            </div>
-            <p class="footer-location">📍 Istanbul, Türkiye</p>
-            <small>© <span id="year"></span> TIMBI AI. All rights reserved.</small>
+        <div class="wrap footer-in">
+            <a href="#home" class="logo"><span class="logo-mark">T</span><span class="logo-text">TIMBI AI</span></a>
+            <p data-i18n="footer_tagline">Websites · Branding · AI automation — Istanbul, Türkiye</p>
+            <p class="copy">© <span id="year">2026</span> TIMBI AI</p>
         </div>
     </footer>
 
+    <a href="https://wa.me/905467653562?text=Hello%20TIMBI%20AI" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.43 9.43 0 1 1 7.99 4.42zm8.02-17.45A11.32 11.32 0 0 0 12.05.72 11.34 11.34 0 0 0 2.24 17.73L.63 23.6l6.01-1.58a11.33 11.33 0 0 0 5.41 1.38h.01A11.34 11.34 0 0 0 20.07 4.05z"/></svg>
+    </a>
+
+    <noscript><p class="noscript">WhatsApp: +90 546 765 35 62 · Istanbul, Türkiye</p></noscript>
+
     <script src="i18n.js"></script>
     <script src="script.js"></script>
+    <script src="hero-gl.js" defer></script>
 </body>
 </html>
