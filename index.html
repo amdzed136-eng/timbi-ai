@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://timbiai.com">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#d4af37">
+    <meta name="theme-color" content="#07070a">
     <link rel="canonical" href="https://timbiai.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,15 +24,7 @@
 
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-inner">
-            <div class="loader-mark">T</div>
-            <div class="loader-ring"></div>
-        </div>
-        <p class="loader-label">TIMBI AI</p>
-        <p class="loader-sub">Premium AI Agency</p>
-    </div>
+    
 
     <!-- Background -->
     <div class="site-bg">
@@ -88,59 +80,18 @@
 
         <!-- ══════════════ HERO ══════════════ -->
         <section class="hero section" id="home">
-            <div class="hero-content reveal">
-                <p class="eyebrow" data-i18n="hero_eyebrow">AI WEBSITES · BRANDING · AUTOMATION</p>
-                <h1 data-i18n="hero_h1">We build websites that make your business look <span class="gold-text">seriously premium.</span></h1>
-                <p class="hero-text" data-i18n="hero_text">TIMBI AI creates high-end websites, sharp brand identities and smart automation systems for businesses ready to grow. Based in Istanbul, built for the world.</p>
+            <canvas id="heroGL" class="hero-gl" aria-hidden="true"></canvas>
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-content">
+                <p class="eyebrow" data-i18n="hero_eyebrow">Websites · Branding · AI automation</p>
+                <h1><span data-i18n="hero_h1a">Websites people</span> <span class="gold-text" data-i18n="hero_h1b">remember.</span></h1>
+                <p class="hero-text" data-i18n="hero_text">Premium websites, brand identities and WhatsApp automation for ambitious businesses. Based in Istanbul, working in English, French and Turkish.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="hero_btn_primary">Start a Project</a>
-                    <a href="#work"    class="btn btn-secondary"        data-i18n="hero_btn_secondary">See Our Work</a>
-                </div>
-                <div class="trust-row">
-                    <div>
-                        <strong>48h</strong>
-                        <span data-i18n="trust_1">Concept preview</span>
-                    </div>
-                    <div>
-                        <strong>100%</strong>
-                        <span data-i18n="trust_2">Mobile-ready</span>
-                    </div>
-                    <div>
-                        <strong data-i18n="trust_3_val">AI</strong>
-                        <span   data-i18n="trust_3">Automation built-in</span>
-                    </div>
+                    <a href="#contact" class="btn btn-primary magnetic" data-i18n="hero_btn_primary">Get a free concept in 48h</a>
+                    <a href="#work" class="hero-link" data-i18n="hero_btn_secondary">See our work →</a>
                 </div>
             </div>
-
-            <div class="hero-panel reveal">
-                <div class="panel-top">
-                    <span></span><span></span><span></span>
-                    <p>timbiai.com</p>
-                </div>
-                <div class="panel-card main-card">
-                    <small data-i18n="panel_small">Premium Digital System</small>
-                    <h3 data-i18n="panel_h3">Website + Brand + AI Workflow</h3>
-                    <div class="progress-line"><span></span></div>
-                </div>
-                <div class="mini-grid">
-                    <div class="panel-card">
-                        <b data-i18n="panel_1_b">Brand</b>
-                        <span data-i18n="panel_1_s">Luxury positioning</span>
-                    </div>
-                    <div class="panel-card">
-                        <b data-i18n="panel_2_b">Web</b>
-                        <span data-i18n="panel_2_s">Fast & premium</span>
-                    </div>
-                    <div class="panel-card">
-                        <b data-i18n="panel_3_b">AI</b>
-                        <span data-i18n="panel_3_s">Smart workflows</span>
-                    </div>
-                    <div class="panel-card">
-                        <b data-i18n="panel_4_b">Growth</b>
-                        <span data-i18n="panel_4_s">More conversions</span>
-                    </div>
-                </div>
-            </div>
+            <p class="hero-hint" aria-hidden="true" data-i18n="hero_hint">Move · Tap the sphere</p>
         </section>
 
         <!-- ══════════════ INDUSTRIES STRIP ══════════════ -->
@@ -491,5 +442,6 @@
 
     <script src="i18n.js"></script>
     <script src="script.js"></script>
+    <script src="hero-gl.js" defer></script>
 </body>
 </html>

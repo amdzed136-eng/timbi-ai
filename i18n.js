@@ -14,11 +14,12 @@ const translations = {
     nav_pricing:'Pricing', nav_cta:'Start a Project',
 
     /* Hero */
-    hero_eyebrow:'AI WEBSITES · BRANDING · AUTOMATION',
-    hero_h1:'We build websites that make your business look seriously premium.',
-    hero_text:'TIMBI AI creates high-end websites, sharp brand identities and smart automation systems for businesses ready to grow. Based in Istanbul, built for the world.',
-    hero_btn_primary:'Start a Project',
-    hero_btn_secondary:'See Our Work',
+    hero_eyebrow:'Websites · Branding · AI automation',
+    hero_h1a:'Websites people', hero_h1b:'remember.',
+    hero_text:'Premium websites, brand identities and WhatsApp automation for ambitious businesses. Based in Istanbul, working in English, French and Turkish.',
+    hero_btn_primary:'Get a free concept in 48h',
+    hero_btn_secondary:'See our work →',
+    hero_hint:'Move · Tap the sphere',
     trust_1:'Concept preview', trust_2:'Mobile-ready',
     trust_3_val:'AI', trust_3:'Automation built-in',
 
@@ -117,11 +118,12 @@ const translations = {
     nav_home:'Accueil', nav_services:'Services', nav_work:'Portfolio',
     nav_pricing:'Offres', nav_cta:'Démarrer un projet',
 
-    hero_eyebrow:'SITES WEB IA · BRANDING · AUTOMATISATION',
-    hero_h1:'Nous créons des sites web qui font paraître votre entreprise sérieusement premium.',
-    hero_text:'TIMBI AI conçoit des sites web haut de gamme, des identités de marque percutantes et des systèmes d\'automatisation intelligents pour les entreprises prêtes à croître. Basés à Istanbul, construits pour le monde.',
-    hero_btn_primary:'Démarrer un projet',
-    hero_btn_secondary:'Voir notre travail',
+    hero_eyebrow:'Sites web · Branding · Automatisation IA',
+    hero_h1a:'Des sites qu\'on', hero_h1b:'n\'oublie pas.',
+    hero_text:'Sites premium, identités de marque et automatisation WhatsApp pour les entreprises ambitieuses. Basé à Istanbul, en français, anglais et turc.',
+    hero_btn_primary:'Concept gratuit en 48h',
+    hero_btn_secondary:'Voir nos projets →',
+    hero_hint:'Bougez · Touchez la sphère',
     trust_1:'Aperçu concept', trust_2:'Mobile-ready',
     trust_3_val:'IA', trust_3:'Automation intégrée',
 
@@ -212,11 +214,12 @@ const translations = {
     nav_home:'Anasayfa', nav_services:'Hizmetler', nav_work:'Portföy',
     nav_pricing:'Fiyatlar', nav_cta:'Proje Başlat',
 
-    hero_eyebrow:'YAPAY ZEKA WEB · MARKA · OTOMASYON',
-    hero_h1:'İşletmenizi gerçekten premium gösterecek web siteleri inşa ediyoruz.',
-    hero_text:'TIMBI AI; büyümeye hazır işletmeler için yüksek kaliteli web siteleri, güçlü marka kimlikleri ve akıllı otomasyon sistemleri oluşturuyor. İstanbul merkezli, dünyaya hitap eden.',
-    hero_btn_primary:'Proje Başlat',
-    hero_btn_secondary:'Çalışmalarımızı Gör',
+    hero_eyebrow:'Web siteleri · Marka · YZ otomasyonu',
+    hero_h1a:'Akılda kalan', hero_h1b:'web siteleri.',
+    hero_text:'İddialı işletmeler için premium web siteleri, marka kimlikleri ve WhatsApp otomasyonu. İstanbul merkezli; Türkçe, İngilizce ve Fransızca.',
+    hero_btn_primary:'48 saatte ücretsiz konsept',
+    hero_btn_secondary:'Projelerimizi gör →',
+    hero_hint:'Hareket ettirin · Küreye dokunun',
     trust_1:'Konsept önizleme', trust_2:'Mobil uyumlu',
     trust_3_val:'YZ', trust_3:'Otomasyon dahil',
 
