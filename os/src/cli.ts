@@ -8,6 +8,8 @@ const arg = args.join(' ').trim();
 
 async function main() {
   if (cmd === 'init') return init();
+  if (cmd === 'telegram:setup') return (await import('./telegram/setup.ts')).telegramSetup();
+  if (cmd === 'llm:setup') return (await import('./core/llm-setup.ts')).llmSetup();
 
   const { bootstrap } = await import('./app.ts');
   const { runTask } = await import('./core/runner.ts');
