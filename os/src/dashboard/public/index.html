@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TIMBI OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070a; --panel: #0f0f13; --panel-2: #15151b; --line: rgba(212,175,55,.16); --line-soft: rgba(245,241,234,.07);
+    --ink: #f5f1ea; --muted: rgba(245,241,234,.58); --gold: #d4af37; --gold-light: #f1d77a; --gold-dark: #8a6d1d;
+    --ok: #7fc99a; --warn: #f1b45a; --bad: #ef6b5b;
+    --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 14px; line-height: 1.5;
+    background-image: radial-gradient(1200px 500px at 85% -10%, rgba(212,175,55,.09), transparent 60%); min-height: 100vh; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .14em; }
+  .mark { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; color: #0a0a0a;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-dark)); }
+  .logo small { display: block; font-size: 10px; letter-spacing: .3em; color: var(--gold); font-weight: 600; }
+  .spacer { flex: 1; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    border: 1px solid var(--line-soft); color: var(--muted); white-space: nowrap; }
+  .pill.ok { color: var(--ok); border-color: rgba(127,201,154,.3); }
+  .pill.bad { color: var(--bad); border-color: rgba(239,107,91,.4); background: rgba(239,107,91,.08); }
+  .pill.gold { color: var(--gold-light); border-color: var(--line); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  button { font: inherit; cursor: pointer; border-radius: 10px; padding: 8px 14px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); font-weight: 600; }
+  button:hover { border-color: var(--gold); }
+  button.gold { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #0a0a0a; border: 0; }
+  button.danger { background: #2a0f0c; border-color: rgba(239,107,91,.5); color: #ffb3a8; }
+  button.danger:hover { background: #3a130f; border-color: var(--bad); }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  .banner { margin: 16px 0 0; padding: 12px 16px; border-radius: 12px; background: rgba(239,107,91,.1); border: 1px solid rgba(239,107,91,.45); color: #ffc7bf; display: none; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .banner.show { display: flex; }
+  .grid { display: grid; gap: 16px; margin-top: 20px; }
+  .kpis { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .cols { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+  @media (max-width: 980px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+  .card { background: var(--panel); border: 1px solid var(--line-soft); border-radius: 16px; padding: 18px; min-width: 0; }
+  .card h2 { margin: 0 0 14px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); font-weight: 700; display: flex; justify-content: space-between; gap: 8px; }
+  .kpi .label { color: var(--muted); font-size: 12px; }
+  .kpi .value { font-size: 26px; font-weight: 800; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .kpi .value small { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .bar { height: 6px; border-radius: 4px; background: var(--panel-2); margin-top: 10px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold)); }
+  .bar.hot > i { background: linear-gradient(90deg, #a8452f, var(--bad)); }
+  .agents { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+  .agent { border: 1px solid var(--line-soft); border-radius: 12px; padding: 12px; background: var(--panel-2); }
+  .agent.active { border-color: var(--line); box-shadow: inset 0 0 0 1px rgba(212,175,55,.08); }
+  .agent b { letter-spacing: .1em; }
+  .agent p { margin: 4px 0 8px; color: var(--muted); font-size: 12px; min-height: 36px; }
+  .agent.planned { opacity: .55; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; padding: 6px 8px; border-bottom: 1px solid var(--line-soft); }
+  td { padding: 8px; border-bottom: 1px solid var(--line-soft); vertical-align: top; overflow-wrap: anywhere; }
+  .scroll { overflow-x: auto; max-height: 420px; overflow-y: auto; }
+  .muted { color: var(--muted); }
+  .mono { font-family: ui-monospace, 'Cascadia Code', Consolas, monospace; font-size: 12px; }
+  .status { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--panel-2); border: 1px solid var(--line-soft); white-space: nowrap; }
+  .s-done, .s-executed, .s-approved, .s-qualified { color: var(--ok); }
+  .s-failed, .s-rejected { color: var(--bad); }
+  .s-pending, .s-queued, .s-running { color: var(--warn); }
+  .approval { border: 1px solid var(--line); border-radius: 12px; padding: 14px; background: var(--panel-2); margin-bottom: 10px; }
+  .approval .draft { white-space: pre-wrap; margin: 10px 0; padding: 10px; border-left: 2px solid var(--gold); background: rgba(212,175,55,.05); border-radius: 0 8px 8px 0; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  textarea, select { width: 100%; font: inherit; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line-soft); border-radius: 10px; padding: 10px; }
+  textarea:focus, select:focus { outline: none; border-color: var(--gold); }
+  .score { font-weight: 800; color: var(--gold-light); font-variant-numeric: tabular-nums; }
+  .chart { display: flex; align-items: flex-end; gap: 4px; height: 70px; margin-top: 6px; }
+  .chart i { flex: 1; background: linear-gradient(180deg, var(--gold), var(--gold-dark)); border-radius: 3px 3px 0 0; min-height: 2px; }
+  .empty { color: var(--muted); padding: 10px 0; }
+  footer { margin-top: 28px; color: var(--muted); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><div class="mark">T</div><div>TIMBI OS<small>CENTRE DE COMMANDE</small></div></div>
+    <span class="pill gold" id="modePill">—</span>
+    <span class="pill" id="statePill"><span class="dot"></span>—</span>
+    <span class="pill" id="auditPill">—</span>
+    <div class="spacer"></div>
+    <button id="tokenBtn">Saisir le jeton</button>
+    <button class="danger" id="stopBtn">■ Arrêt d'urgence</button>
+  </header>
+
+  <div class="banner" id="stopBanner">
+    <strong>ARRÊT D'URGENCE ACTIF</strong><span id="stopReason"></span><div class="spacer"></div>
+    <button id="resumeBtn">Reprendre…</button>
+  </div>
+
+  <section class="grid kpis">
+    <div class="card kpi"><div class="label">Dépenses aujourd'hui</div><div class="value" id="kToday">—</div><div class="bar" id="bToday"><i></i></div></div>
+    <div class="card kpi"><div class="label">Dépenses ce mois</div><div class="value" id="kMonth">—</div><div class="bar" id="bMonth"><i></i></div></div>
+    <div class="card kpi"><div class="label">Approbations en attente</div><div class="value" id="kPending">—</div></div>
+    <div class="card kpi"><div class="label">Prospects qualifiés</div><div class="value" id="kLeads">—</div></div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h2>Agents <span class="muted" style="letter-spacing:0;text-transform:none;font-weight:500">2 actifs · 7 planifiés</span></h2>
+    <div class="agents" id="agents"></div>
+  </section>
+
+  <section class="grid cols">
+    <div class="card">
+      <h2>Approbations humaines</h2>
+      <div id="approvals"></div>
+    </div>
+    <div class="card">
+      <h2>Lancer une mission</h2>
+      <div class="row" style="margin-bottom:8px">
+        <select id="taskAgent" style="width:auto"><option value="hunter">HUNTER — prospection</option><option value="atlas">ATLAS — objectif</option></select>
+      </div>
+      <textarea id="taskBrief" rows="3" placeholder="Ex. : Trouve des cliniques à Istanbul avec une clientèle francophone et un site faible."></textarea>
+      <div class="row" style="margin-top:8px"><button class="gold" id="taskBtn">Mettre en file</button><span class="muted" id="taskMsg"></span></div>
+      <h2 style="margin-top:22px">Coûts API · 14 jours</h2>
+      <div class="chart" id="chart"></div>
+      <div class="muted" id="costAgents" style="margin-top:8px"></div>
+    </div>
+  </section>
+
+  <section class="grid cols">
+    <div class="card"><h2>Prospects</h2><div class="scroll"><table><thead><tr><th>Entreprise</th><th>Secteur</th><th>Score</th><th>Statut</th></tr></thead><tbody id="leads"></tbody></table></div></div>
+    <div class="card"><h2>Tâches</h2><div class="scroll"><table><thead><tr><th>Agent</th><th>Tâche</th><th>Statut</th></tr></thead><tbody id="tasks"></tbody></table></div></div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h2>Journal d'audit <span class="muted" style="letter-spacing:0;text-transform:none;font-weight:500">ajout seul · chaîné SHA-256</span></h2>
+    <div class="scroll"><table><thead><tr><th>#</th><th>Heure</th><th>Acteur</th><th>Action</th><th>Cible</th></tr></thead><tbody id="audit"></tbody></table></div>
+  </section>
+
+  <footer>TIMBI AI · Istanbul — aucune action externe sans votre approbation.</footer>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const usd = (n) => `${Number(n).toFixed(n < 1 ? 3 : 2)} $`;
+  // Tout le contenu dynamique passe par textContent : aucune injection HTML possible depuis les données des agents.
+  const el = (tag, props = {}, ...kids) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) k === 'class' ? (e.className = v) : (e[k] = v);
+    for (const k of kids) e.append(k instanceof Node ? k : document.createTextNode(String(k ?? '')));
+    return e;
+  };
+  const status = (s) => el('span', { class: `status s-${s}` }, s);
+
+  // Jeton : depuis #token=… une seule fois, puis conservé pour la session de l'onglet uniquement.
+  const readToken = () => { try { return sessionStorage.getItem('timbi-token') || ''; } catch { return ''; } };
+  const saveToken = (t) => { try { sessionStorage.setItem('timbi-token', t); } catch {} };
+  const m = location.hash.match(/token=([0-9a-f]+)/);
+  if (m) { saveToken(m[1]); history.replaceState(null, '', location.pathname); }
+  $('tokenBtn').onclick = () => { const t = prompt('DASHBOARD_TOKEN (fichier os/.env)'); if (t) saveToken(t.trim()); refresh(); };
+
+  async function post(path, body) {
+    const r = await fetch(path, { method: 'POST', headers: { 'content-type': 'application/json', 'x-timbi-token': readToken() }, body: JSON.stringify(body || {}) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || r.status);
+    return j;
+  }
+  const act = (fn) => async () => { try { await fn(); } catch (e) { alert(`Action refusée : ${e.message}`); } refresh(); };
+
+  $('stopBtn').onclick = act(() => confirm("Activer l'arrêt d'urgence ? Tous les agents seront stoppés.") && post('/api/emergency-stop'));
+  $('resumeBtn').onclick = act(() => { const c = prompt('Tapez CONFIRMER pour lever l\'arrêt d\'urgence'); return c && post('/api/resume', { confirm: c }); });
+  $('taskBtn').onclick = act(async () => {
+    const brief = $('taskBrief').value.trim(); if (!brief) return;
+    const r = await post('/api/tasks', { agent_id: $('taskAgent').value, brief });
+    $('taskBrief').value = ''; $('taskMsg').textContent = `En file : ${r.id.slice(0, 8)}`;
+  });
+
+  function setBar(id, value, cap) {
+    const pct = Math.min(100, (value / cap) * 100);
+    $(id).firstElementChild.style.width = `${pct}%`;
+    $(id).classList.toggle('hot', pct >= 80);
+  }
+
+  function render(d) {
+    const s = d.system;
+    $('modePill').textContent = `${s.mode.toUpperCase()} · LLM ${s.llmMode} · Telegram ${s.telegramMode}`;
+    const sp = $('statePill'); sp.className = `pill ${s.emergencyStop ? 'bad' : 'ok'}`; sp.lastChild.textContent = s.emergencyStop ? ' ARRÊTÉ' : ' Opérationnel';
+    const ap = $('auditPill'); ap.className = `pill ${s.audit.ok ? 'ok' : 'bad'}`; ap.textContent = s.audit.ok ? `Audit intègre · ${s.audit.checked}` : `AUDIT ALTÉRÉ #${s.audit.brokenAt}`;
+    $('stopBanner').classList.toggle('show', !!s.emergencyStop); $('stopReason').textContent = s.emergencyStop || '';
+    $('stopBtn').disabled = !!s.emergencyStop;
+    const hasToken = !!readToken(); $('tokenBtn').textContent = hasToken ? 'Jeton ✓' : 'Saisir le jeton';
+
+    const b = d.budget;
+    $('kToday').replaceChildren(usd(b.today), el('small', {}, ` / ${b.dailyUsd} $`)); setBar('bToday', b.today, b.dailyUsd);
+    $('kMonth').replaceChildren(usd(b.month), el('small', {}, ` / ${b.monthlyUsd} $`)); setBar('bMonth', b.month, b.monthlyUsd);
+    const pending = d.approvals.filter((a) => a.status === 'pending');
+    $('kPending').textContent = pending.length;
+    $('kLeads').textContent = d.leads.filter((l) => l.status === 'qualified').length;
+
+    $('agents').replaceChildren(...d.agents.map((a) => el('div', { class: `agent ${a.status}` },
+      el('div', { class: 'row' }, el('b', {}, a.name), el('span', { class: `pill ${a.status === 'active' ? 'ok' : ''}`, style: 'margin-left:auto' }, a.status === 'active' ? 'actif' : 'planifié')),
+      el('p', {}, a.role),
+      el('div', { class: 'muted mono' }, a.lastRun ? `dernier : ${a.lastRun.at.slice(5, 16).replace('T', ' ')} · ${a.lastRun.status}` : '—'))));
+
+    const recent = d.approvals.slice(0, 8);
+    $('approvals').replaceChildren(...(recent.length ? recent.map((a) => {
+      const box = el('div', { class: 'approval' },
+        el('div', { class: 'row' }, el('b', {}, a.action_type), status(a.status), el('span', { class: 'muted', style: 'margin-left:auto' }, `par ${a.requested_by.toUpperCase()}`)),
+        el('div', { style: 'margin-top:6px' }, a.summary));
+      if (a.payload && a.payload.message_draft) box.append(el('div', { class: 'draft' }, a.payload.message_draft));
+      if (a.result) box.append(el('div', { class: 'muted mono' }, JSON.stringify(a.result)));
+      if (a.status === 'pending') box.append(el('div', { class: 'row' },
+        Object.assign(el('button', { class: 'gold', disabled: !hasToken }, 'Approuver'), { onclick: act(() => post(`/api/approvals/${a.id}/approve`)) }),
+        Object.assign(el('button', { disabled: !hasToken }, 'Refuser'), { onclick: act(() => post(`/api/approvals/${a.id}/reject`)) }),
+        el('span', { class: 'muted' }, `expire ${a.expires_at.slice(5, 16).replace('T', ' ')} UTC`)));
+      return box;
+    }) : [el('div', { class: 'empty' }, 'Aucune demande pour le moment.')]));
+
+    $('leads').replaceChildren(...(d.leads.length ? d.leads.map((l) => el('tr', {},
+      el('td', {}, el('div', {}, l.company), el('div', { class: 'muted', style: 'font-size:12px' }, `${l.city}${l.is_fictitious ? ' · fictif' : ''}`)),
+      el('td', {}, l.sector), el('td', { class: 'score' }, l.score), el('td', {}, status(l.status)))) : [el('tr', {}, el('td', { class: 'empty', colSpan: 4 }, 'Aucun prospect. Lancez HUNTER.'))]));
+
+    $('tasks').replaceChildren(...(d.tasks.length ? d.tasks.map((t) => el('tr', {},
+      el('td', { class: 'mono' }, t.agent_id.toUpperCase()),
+      el('td', {}, el('div', {}, t.title), t.error ? el('div', { style: 'color:var(--bad);font-size:12px' }, t.error) : ''),
+      el('td', {}, status(t.status)))) : [el('tr', {}, el('td', { class: 'empty', colSpan: 3 }, 'Aucune tâche.'))]));
+
+    $('audit').replaceChildren(...d.audit.map((a) => el('tr', {},
+      el('td', { class: 'mono muted' }, a.id), el('td', { class: 'mono' }, a.ts.slice(5, 19).replace('T', ' ')),
+      el('td', {}, a.actor), el('td', { class: 'mono' }, a.action), el('td', { class: 'mono muted' }, (a.target || '').slice(0, 36)))));
+
+    const max = Math.max(0.0001, ...d.costByDay.map((x) => x.cost));
+    $('chart').replaceChildren(...(d.costByDay.length ? d.costByDay.map((x) => el('i', { title: `${x.day} : ${x.cost} $`, style: `height:${(x.cost / max) * 100}%` })) : [el('span', { class: 'muted' }, 'Pas encore de dépenses.')]));
+    $('costAgents').textContent = d.costByAgent.map((c) => `${c.agent_id.toUpperCase()} ${usd(c.cost)} (${c.calls} appels)`).join(' · ');
+  }
+
+  async function refresh() {
+    try { render(await (await fetch('/api/overview')).json()); } catch (e) { console.error(e); }
+  }
+  refresh(); setInterval(refresh, 5000);
+})();
+</script>
+</body>
+</html>
