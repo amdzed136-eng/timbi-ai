@@ -178,14 +178,16 @@ export const TOOLS: Record<string, ToolDef> = {
     name: 'request_outreach_approval',
     description: "Demande au propriétaire l'autorisation d'envoyer un premier message à un prospect. N'ENVOIE RIEN : crée une demande d'approbation Telegram. L'envoi n'aura lieu qu'après validation humaine.",
     input_schema: obj({
-      lead_id: { type: 'string' },
+      lead_id: { type: 'string', description: 'lead_id renvoyé par save_lead (le company_id est aussi accepté).' },
       channel: { type: 'string', enum: ['email', 'whatsapp'] },
       message_draft: { type: 'string', description: 'Brouillon court, poli, dans la langue du prospect.' },
     }, ['lead_id', 'channel', 'message_draft']),
     run: async ({ lead_id, channel, message_draft }, { db, cfg, notifier, agentId, taskId }) => {
-      const lead = db.prepare('select * from leads where id = ?').get(lead_id);
-      if (!lead) throw new Error(`Prospect inconnu : ${lead_id}`);
-      const l = parseRow<{ company: string; score: number; status: string }>(lead);
+      // Accepte le lead_id renvoyé par save_lead OU l'identifiant d'entreprise (company_id) : erreur fréquente du modèle.
+      const lead = db.prepare('select * from leads where id = ? or external_ref = ?').get(lead_id, lead_id);
+      if (!lead) throw new Error(`Prospect inconnu : ${lead_id}. Enregistre-le d'abord avec save_lead.`);
+      const l = parseRow<{ id: string; company: string; score: number; status: string }>(lead);
+      lead_id = l.id;
       if (l.status === 'contacted') return { status: 'skipped', note: `${l.company} a déjà été contacté. Aucune nouvelle demande.` };
       // Anti-doublon : jamais deux demandes de contact actives pour le même prospect.
       const dup = db.prepare("select id from approvals where action_type = 'outreach.send' and status in ('pending', 'approved', 'executed') and json_extract(payload, '$.lead_id') = ?")

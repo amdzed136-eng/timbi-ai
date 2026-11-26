@@ -73,6 +73,15 @@ test("anti-doublon : deux missions n'ouvrent qu'une demande de contact par prosp
   assert.equal(listApprovals(deps.db, 'pending').length, 1);
 });
 
+test("request_outreach_approval accepte aussi l'identifiant d'entreprise", async () => {
+  const { deps } = setup();
+  const { TOOLS } = await import('../src/tools/index.ts');
+  const ctx = { ...deps, agentId: 'hunter', taskId: 't', runId: 'r', depth: 0, runSubtask: async () => ({ status: '', summary: '' }) };
+  await TOOLS.save_lead.run({ company_id: 'fx-005', score: 73, rationale: 'x' }, ctx);
+  const r = await TOOLS.request_outreach_approval.run({ lead_id: 'fx-005', channel: 'email', message_draft: 'Bonjour' }, ctx) as { status: string };
+  assert.equal(r.status, 'pending');
+});
+
 test('contrats et paiements sont interdits aux agents', async () => {
   const { deps } = setup();
   for (const actionType of ['contract.sign', 'payment.make']) {
